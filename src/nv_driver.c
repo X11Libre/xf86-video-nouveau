@@ -1371,6 +1371,9 @@ NVScreenInit(SCREEN_INIT_ARGS_DECL)
 			pNv->ShadowFB = TRUE;
 			pNv->wfb_enabled = FALSE;
 			pNv->tiled_scanout = FALSE;
+			pScrn->capabilities &= ~(RR_Capability_SourceOutput |
+						 RR_Capability_SourceOffload |
+						 RR_Capability_SinkOutput);
 			pScrn->displayWidth = nv_pitch_align(pNv,
 							     pScrn->virtualX,
 							     pScrn->depth);
