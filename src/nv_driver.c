@@ -1565,11 +1565,14 @@ NVScreenInit(SCREEN_INIT_ARGS_DECL)
 
 	/*
 	 * Initialize colormap layer.
-	 * Must follow initialization of the default colormap 
+	 * Must follow initialization of the default colormap.
+	 * X-Server < 1.20 mishandles > 256 slots / > 8 bpc color maps, so skip
+	 * color map setup on old servers at > 8 bpc. Gamma luts still work.
 	 */
-	if (xf86_config->num_crtc &&
-	    !xf86HandleColormaps(pScreen, 256, 8, NVLoadPalette,
-				 NULL, CMAP_PALETTED_TRUECOLOR))
+	if (xf86_config->num_crtc && (pScrn->rgbBits <= 8 ||
+	    XORG_VERSION_CURRENT >= XORG_VERSION_NUMERIC(1,20,0,0,0)) &&
+	    !xf86HandleColormaps(pScreen, 1 << pScrn->rgbBits, pScrn->rgbBits,
+				 NVLoadPalette, NULL, CMAP_PALETTED_TRUECOLOR))
 		return FALSE;
 
 	/* Report any unused options (only for the first generation) */
