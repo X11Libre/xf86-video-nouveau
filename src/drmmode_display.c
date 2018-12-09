@@ -678,7 +678,8 @@ drmmode_gamma_set(xf86CrtcPtr crtc, CARD16 *red, CARD16 *green, CARD16 *blue,
 				  size, red, green, blue);
 	if (ret != 0) {
 		xf86DrvMsg(crtc->scrn->scrnIndex, X_ERROR,
-			   "failed to set gamma: %s\n", strerror(-ret));
+			   "failed to set gamma with %d entries: %s\n",
+			   size, strerror(-ret));
 	}
 }
 
