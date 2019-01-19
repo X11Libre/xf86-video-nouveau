@@ -127,6 +127,12 @@ AC_SUBST([DRIVER_NAME])
 XORG_MANPAGE_SECTIONS
 XORG_RELEASE_VERSION
 
+AC_CHECK_DECL(xf86CursorResetCursor,
+              [AC_DEFINE(HAVE_XF86_CURSOR_RESET_CURSOR, 1,
+              [Have xf86CursorResetCursor API])], [],
+              [#include <xorg-server.h>
+               #include <xf86Cursor.h>])
+
 AC_CHECK_HEADERS([list.h],
                  [have_list_h="yes"], [have_list_h="no"],
                  [#include <X11/Xdefs.h>
