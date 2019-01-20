@@ -2244,7 +2244,7 @@ NVInitVideo(ScreenPtr pScreen)
 		XF86MCAdaptorPtr *adaptorsXvMC = malloc(sizeof(XF86MCAdaptorPtr));
 		
 		if (adaptorsXvMC) {
-			adaptorsXvMC[0] = vlCreateAdaptorXvMC(pScreen, textureAdaptor[0]->name);
+			adaptorsXvMC[0] = vlCreateAdaptorXvMC(pScreen, (char *)textureAdaptor[0]->name);
 			
 			if (adaptorsXvMC[0]) {
 				vlInitXvMC(pScreen, 1, adaptorsXvMC);
