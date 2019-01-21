@@ -74,8 +74,6 @@ XORG_DRIVER_CHECK_EXT(DRI2, [dri2proto >= 2.6])
 # Checks for libraries
 PKG_CHECK_MODULES(LIBDRM, [libdrm >= 2.4.60])
 PKG_CHECK_MODULES(LIBDRM_NOUVEAU, [libdrm_nouveau >= 2.4.25])
-AC_SUBST(LIBDRM_NOUVEAU_CFLAGS)
-AC_SUBST(LIBDRM_NOUVEAU_LIBS)
 
 # Obtain compiler/linker options for the driver dependencies
 PKG_CHECK_MODULES(XORG, [xorg-server >= 1.8] xproto fontsproto $REQUIRED_MODULES)
@@ -92,8 +90,6 @@ if test "x$LIBUDEV" = xyes; then
 	AC_DEFINE(HAVE_LIBUDEV, 1, [libudev support])
 fi
 AM_CONDITIONAL(LIBUDEV, [ test "x$LIBUDEV" = "xyes" ] )
-AC_SUBST([LIBUDEV_CFLAGS])
-AC_SUBST([LIBUDEV_LIBS])
 
 # Use -Wall all the time
 CFLAGS="$CFLAGS -Wall"
