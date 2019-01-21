@@ -94,9 +94,6 @@ AM_CONDITIONAL(LIBUDEV, [ test "x$LIBUDEV" = "xyes" ] )
 AC_SUBST([LIBUDEV_CFLAGS])
 AC_SUBST([LIBUDEV_LIBS])
 
-# Checks for header files.
-AC_HEADER_STDC
-
 # Use -Wall all the time
 CFLAGS="$CFLAGS -Wall"
 
