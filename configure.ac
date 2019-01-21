@@ -109,7 +109,7 @@ AC_HEADER_STDC
 # Use -Wall all the time
 CFLAGS="$CFLAGS -Wall"
 
-# Check for -minline-all-stringops availabtility
+# Check for -minline-all-stringops availability
 OLD_CFLAGS="$CFLAGS"
 CFLAGS="$CFLAGS -minline-all-stringops"
 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ #include <stdio.h> ]], [[ ]])],
