@@ -1366,7 +1366,7 @@ CPU_copy:
 		pPriv->currentBuffer ^= 1;
 	} else 
 	if (action_flags & USE_TEXTURE) {
-		int ret = BadImplementation;
+		ret = BadImplementation;
 
 		if (pNv->Architecture == NV_ARCH_30) {
 			ret = NV30PutTextureImage(pScrn, pPriv->video_mem,
