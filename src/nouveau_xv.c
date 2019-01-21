@@ -1192,7 +1192,6 @@ NVPutImage(ScrnInfoPtr pScrn, short src_x, short src_y, short drw_x,
 
 	if (newTTSize <= destination_buffer->size) {
 		unsigned char *dst;
-		int i = 0;
 
 		/* Upload to GART */
 		nouveau_bo_map(destination_buffer, NOUVEAU_BO_WR, pNv->client);
