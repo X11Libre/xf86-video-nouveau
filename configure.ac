@@ -20,6 +20,7 @@
 #
 # Process this file with autoconf to produce a configure script
 
+# Initialize Autoconf
 AC_PREREQ([2.60])
 AC_INIT([xf86-video-nouveau],
         [1.0.15],
@@ -35,6 +36,7 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR(.)
 
+# Initialize Automake
 AM_INIT_AUTOMAKE([dist-bzip2])
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
@@ -55,25 +57,27 @@ LT_INIT([disable-static])
 
 AH_TOP([#include "xorg-server.h"])
 
+# Define a configure option for an alternate module directory
 AC_ARG_WITH(xorg-module-dir,
             AS_HELP_STRING([--with-xorg-module-dir=DIR],
                            [Default xorg module directory [[default=$libdir/xorg/modules]]]),
             [moduledir="$withval"],
             [moduledir="$libdir/xorg/modules"])
 
-# Checks for extensions
+# Store the list of server defined optional extensions in REQUIRED_MODULES
 XORG_DRIVER_CHECK_EXT(RANDR, randrproto)
 XORG_DRIVER_CHECK_EXT(RENDER, renderproto)
 XORG_DRIVER_CHECK_EXT(XV, videoproto)
 XORG_DRIVER_CHECK_EXT(DPMSExtension, xextproto)
 XORG_DRIVER_CHECK_EXT(DRI2, [dri2proto >= 2.6])
 
-# Checks for pkg-config packages
+# Checks for libraries
 PKG_CHECK_MODULES(LIBDRM, [libdrm >= 2.4.60])
 PKG_CHECK_MODULES(LIBDRM_NOUVEAU, [libdrm_nouveau >= 2.4.25])
 AC_SUBST(LIBDRM_NOUVEAU_CFLAGS)
 AC_SUBST(LIBDRM_NOUVEAU_LIBS)
 
+# Obtain compiler/linker options for the driver dependencies
 PKG_CHECK_MODULES(XORG, [xorg-server >= 1.8] xproto fontsproto $REQUIRED_MODULES)
 PKG_CHECK_MODULES(XEXT, [xextproto >= 7.0.99.1],
 		  HAVE_XEXTPROTO_71="yes"; AC_DEFINE(HAVE_XEXTPROTO_71, 1, [xextproto 7.1 available]),
@@ -81,7 +85,6 @@ PKG_CHECK_MODULES(XEXT, [xextproto >= 7.0.99.1],
 AM_CONDITIONAL(HAVE_XEXTPROTO_71, [ test "$HAVE_XEXTPROTO_71" = "yes" ])
 sdkdir=$(pkg-config --variable=sdkdir xorg-server)
 
-# Checks for libraries.
 PKG_CHECK_MODULES([PCIACCESS], [pciaccess >= 0.10])
 
 PKG_CHECK_MODULES(LIBUDEV, [libudev], [LIBUDEV=yes], [LIBUDEV=no])
