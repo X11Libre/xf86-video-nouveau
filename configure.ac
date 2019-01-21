@@ -50,10 +50,8 @@ XORG_DEFAULT_OPTIONS
 m4_ifndef([XORG_DRIVER_CHECK_EXT],
           [m4_fatal([must install xorg-server macros before running autoconf/autogen])])
 
-
-# Checks for programs.
-AC_DISABLE_STATIC
-LT_INIT
+# Initialize libtool
+LT_INIT([disable-static])
 
 AH_TOP([#include "xorg-server.h"])
 
