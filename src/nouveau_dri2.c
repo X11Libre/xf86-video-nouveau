@@ -34,7 +34,7 @@ static PixmapPtr get_drawable_pixmap(DrawablePtr drawable)
 		return (*drawable->pScreen->GetWindowPixmap)((WindowPtr)drawable);
 }
 
-DRI2BufferPtr
+static DRI2BufferPtr
 nouveau_dri2_create_buffer2(ScreenPtr pScreen, DrawablePtr pDraw, unsigned int attachment,
 			   unsigned int format)
 {
@@ -105,7 +105,7 @@ nouveau_dri2_create_buffer2(ScreenPtr pScreen, DrawablePtr pDraw, unsigned int a
 	return &nvbuf->base;
 }
 
-DRI2BufferPtr
+static DRI2BufferPtr
 nouveau_dri2_create_buffer(DrawablePtr pDraw, unsigned int attachment,
 			   unsigned int format)
 {
@@ -113,7 +113,7 @@ nouveau_dri2_create_buffer(DrawablePtr pDraw, unsigned int attachment,
 					   attachment, format);
 }
 
-void
+static void
 nouveau_dri2_destroy_buffer2(ScreenPtr pScreen, DrawablePtr pDraw, DRI2BufferPtr buf)
 {
 	struct nouveau_dri2_buffer *nvbuf;
@@ -127,13 +127,13 @@ nouveau_dri2_destroy_buffer2(ScreenPtr pScreen, DrawablePtr pDraw, DRI2BufferPtr
 	free(nvbuf);
 }
 
-void
+static void
 nouveau_dri2_destroy_buffer(DrawablePtr pDraw, DRI2BufferPtr buf)
 {
 	nouveau_dri2_destroy_buffer2(pDraw->pScreen, pDraw, buf);
 }
 
-void
+static void
 nouveau_dri2_copy_region2(ScreenPtr pScreen, DrawablePtr pDraw, RegionPtr pRegion,
 			 DRI2BufferPtr pDstBuffer, DRI2BufferPtr pSrcBuffer)
 {
@@ -211,7 +211,7 @@ nouveau_dri2_copy_region2(ScreenPtr pScreen, DrawablePtr pDraw, RegionPtr pRegio
 	FreeScratchGC(pGC);
 }
 
-void
+static void
 nouveau_dri2_copy_region(DrawablePtr pDraw, RegionPtr pRegion,
 			 DRI2BufferPtr pDstBuffer, DRI2BufferPtr pSrcBuffer)
 {
