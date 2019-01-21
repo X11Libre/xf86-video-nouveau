@@ -2131,7 +2131,7 @@ NV50SetupTexturedVideo (ScreenPtr pScreen)
 	return adapt;
 }
 
-void
+static void
 NVSetupTexturedVideo (ScreenPtr pScreen, XF86VideoAdaptorPtr *textureAdaptor)
 {
 	ScrnInfoPtr          pScrn = xf86ScreenToScrn(pScreen);
