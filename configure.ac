@@ -53,7 +53,6 @@ m4_ifndef([XORG_DRIVER_CHECK_EXT],
 # Checks for programs.
 AC_DISABLE_STATIC
 LT_INIT
-AC_PROG_CC
 
 AH_TOP([#include "xorg-server.h"])
 
