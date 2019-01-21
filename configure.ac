@@ -26,15 +26,6 @@ AC_INIT([xf86-video-nouveau],
         [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],
         [xf86-video-nouveau])
 
-AC_DEFINE_UNQUOTED([NV_MAJOR_VERSION],
-                   [$(echo $PACKAGE_VERSION | sed -e 's/^\([[0-9]]*\)\.[[0-9]]*\.[[0-9]]*/\1/')],
-                   [Major version])
-AC_DEFINE_UNQUOTED([NV_MINOR_VERSION],
-                   [$(echo $PACKAGE_VERSION | sed -e 's/^[[0-9]]*\.\([[0-9]]*\)\.[[0-9]]*/\1/')],
-                   [Minor version])
-AC_DEFINE_UNQUOTED([NV_PATCHLEVEL],
-                   [$(echo $PACKAGE_VERSION | sed -e 's/^[[0-9]]*\.[[0-9]]*\.\([[0-9]]*\)/\1/')],
-                   [Patch version])
 AC_DEFINE_UNQUOTED([NV_DRIVER_DATE],
                    [$(echo -n \";git log |head -3|tail -1|tr -d '\n';echo -n \")],
                    [Driver date])
