@@ -115,9 +115,6 @@ AC_SUBST([moduledir])
 DRIVER_NAME=nouveau
 AC_SUBST([DRIVER_NAME])
 
-XORG_MANPAGE_SECTIONS
-XORG_RELEASE_VERSION
-
 AC_CHECK_DECL(xf86CursorResetCursor,
               [AC_DEFINE(HAVE_XF86_CURSOR_RESET_CURSOR, 1,
               [Have xf86CursorResetCursor API])], [],
