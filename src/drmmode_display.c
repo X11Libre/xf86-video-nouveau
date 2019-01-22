@@ -701,7 +701,11 @@ drmmode_set_scanout_pixmap(xf86CrtcPtr crtc, PixmapPtr ppix)
 	int c, total_width = 0, max_height = 0, this_x = 0;
 	if (!ppix) {
 		if (crtc->randr_crtc->scanout_pixmap) {
+#ifdef HAS_DIRTYTRACKING_DRAWABLE_SRC
+			PixmapStopDirtyTracking(&crtc->randr_crtc->scanout_pixmap->drawable, screenpix);
+#else
 			PixmapStopDirtyTracking(crtc->randr_crtc->scanout_pixmap, screenpix);
+#endif
 			if (drmmode && drmmode->fb_id) {
 				drmModeRmFB(drmmode->fd, drmmode->fb_id);
 				drmmode->fb_id = 0;
@@ -747,7 +751,10 @@ drmmode_set_scanout_pixmap(xf86CrtcPtr crtc, PixmapPtr ppix)
 		screen->height = screenpix->drawable.height = max_height;
 	}
 	drmmode_crtc->scanout_pixmap_x = this_x;
-#ifdef HAS_DIRTYTRACKING_ROTATION
+
+#ifdef HAS_DIRTYTRACKING_DRAWABLE_SRC
+	PixmapStartDirtyTracking(&ppix->drawable, screenpix, 0, 0, this_x, 0, RR_Rotate_0);
+#elif defined(HAS_DIRTYTRACKING_ROTATION)
 	PixmapStartDirtyTracking(ppix, screenpix, 0, 0, this_x, 0, RR_Rotate_0);
 #elif defined(HAS_DIRTYTRACKING2)
 	PixmapStartDirtyTracking2(ppix, screenpix, 0, 0, this_x, 0);
