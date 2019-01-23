@@ -38,7 +38,6 @@
 #include "dixstruct.h"
 #include "scrnintstr.h"
 
-#define FB_ACCESS_WRAPPER
 #include "fb.h"
 
 #include "xf86cmap.h"
