@@ -140,8 +140,12 @@ static struct NvFamily NVKnownFamilies[] =
   { "GeForce 6",   "NV4x" },
   { "GeForce 7",   "G7x" },
   { "GeForce 8",   "G8x" },
-  { "GeForce GTX 200", "NVA0" },
-  { "GeForce GTX 400", "NVC0" },
+  { "GeForce 9",   "G9x" },
+  { "GeForce GTX 2xx/3xx", "GT2xx" },
+  { "GeForce GTX 4xx/5xx", "GFxxx" },
+  { "GeForce GTX 6xx/7xx", "GKxxx" },
+  { "GeForce GTX 9xx", "GMxxx" },
+  { "GeForce GTX 10xx", "GPxxx" },
   { NULL, NULL}
 };
 
