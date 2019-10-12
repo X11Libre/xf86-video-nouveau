@@ -62,7 +62,10 @@ nouveau_dri2_create_buffer2(ScreenPtr pScreen, DrawablePtr pDraw, unsigned int a
 			ppix->refcnt++;
 	} else {
 		int bpp;
-		unsigned int usage_hint = NOUVEAU_CREATE_PIXMAP_TILED;
+		unsigned int usage_hint = 0;
+
+		if (pNv->Architecture >= NV_ARCH_10)
+			usage_hint |= NOUVEAU_CREATE_PIXMAP_TILED;
 
 		/* 'format' is just depth (or 0, or maybe it depends on the caller) */
 		bpp = round_up_pow2(format ? format : pDraw->depth);

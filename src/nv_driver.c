@@ -1082,7 +1082,8 @@ NVPreInit(ScrnInfoPtr pScrn, int flags)
 			pNv->wfb_enabled = xf86ReturnOptValBool(
 				pNv->Options, OPTION_WFB, FALSE);
 
-		pNv->tiled_scanout = TRUE;
+		if (pNv->Architecture >= NV_ARCH_10)
+			pNv->tiled_scanout = TRUE;
 	}
 
 	pNv->ce_enabled =
