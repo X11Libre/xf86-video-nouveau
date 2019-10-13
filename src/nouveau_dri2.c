@@ -248,9 +248,13 @@ static uint64_t dri2_sequence;
 static Bool
 update_front(DrawablePtr draw, DRI2BufferPtr front)
 {
-	int r;
-	PixmapPtr pixmap;
+	ScrnInfoPtr scrn = xf86ScreenToScrn(draw->pScreen);
+	NVPtr pNv = NVPTR(scrn);
 	struct nouveau_dri2_buffer *nvbuf = nouveau_dri2_buffer(front);
+	struct nouveau_bo *pixmap_bo;
+
+	PixmapPtr pixmap;
+	int r;
 
 	if (draw->type == DRAWABLE_PIXMAP)
 		pixmap = (PixmapPtr)draw;
@@ -259,8 +263,16 @@ update_front(DrawablePtr draw, DRI2BufferPtr front)
 
 	pixmap->refcnt++;
 
+	pNv->exa_force_cp = TRUE;
 	exaMoveInPixmap(pixmap);
-	r = nouveau_bo_name_get(nouveau_pixmap_bo(pixmap), &front->name);
+	pNv->exa_force_cp = FALSE;
+	pixmap_bo = nouveau_pixmap_bo(pixmap);
+
+	if (!pixmap_bo)
+		r = -1;
+	else
+		r = nouveau_bo_name_get(pixmap_bo, &front->name);
+
 	if (r) {
 		(*draw->pScreen->DestroyPixmap)(pixmap);
 		return FALSE;

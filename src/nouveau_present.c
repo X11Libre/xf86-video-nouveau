@@ -147,12 +147,25 @@ nouveau_present_flip_check(RRCrtcPtr rrcrtc, WindowPtr window,
 			   PixmapPtr pixmap, Bool sync_flip)
 {
 	ScrnInfoPtr scrn = xf86ScreenToScrn(window->drawable.pScreen);
+	NVPtr pNv = NVPTR(scrn);
 	xf86CrtcPtr crtc = rrcrtc->devPrivate;
+	struct nouveau_pixmap *priv = nouveau_pixmap(pixmap);
 
 	if (!scrn->vtSema || !drmmode_crtc_on(crtc) || crtc->rotatedData)
 		return FALSE;
 
-	return TRUE;
+	if (!priv) {
+		/* The pixmap may not have had backing for low-memory GPUs, or
+		 * if we ran out of VRAM. Make sure it's properly backed for
+		 * flipping.
+		 */
+		pNv->exa_force_cp = TRUE;
+		exaMoveInPixmap(pixmap);
+		pNv->exa_force_cp = FALSE;
+		priv = nouveau_pixmap(pixmap);
+	}
+
+	return priv ? TRUE : FALSE;
 }
 
 static void
