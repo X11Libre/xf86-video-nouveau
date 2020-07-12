@@ -559,16 +559,16 @@ redisplay_dirty(ScreenPtr screen, PixmapDirtyUpdatePtr dirty)
 {
 	RegionRec pixregion;
 
-	PixmapRegionInit(&pixregion, dirty->slave_dst);
+	PixmapRegionInit(&pixregion, dirty->secondary_dst);
 
-	DamageRegionAppend(&dirty->slave_dst->drawable, &pixregion);
+	DamageRegionAppend(&dirty->secondary_dst->drawable, &pixregion);
 #ifdef HAS_DIRTYTRACKING_ROTATION
 	PixmapSyncDirtyHelper(dirty);
 #else
 	PixmapSyncDirtyHelper(dirty, &pixregion);
 #endif
 
-	DamageRegionProcessPending(&dirty->slave_dst->drawable);
+	DamageRegionProcessPending(&dirty->secondary_dst->drawable);
 	RegionUninit(&pixregion);
 }
 

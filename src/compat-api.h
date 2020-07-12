@@ -102,4 +102,8 @@
 
 #endif
 
+#if ABI_VIDEODRV_VERSION < SET_ABI_VERSION(25, 2)
+#define secondary_dst slave_dst
+#endif
+
 #endif
