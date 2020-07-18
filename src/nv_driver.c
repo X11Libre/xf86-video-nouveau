@@ -1489,7 +1489,7 @@ NVScreenInit(SCREEN_INIT_ARGS_DECL)
 
 	xf86SetBlackWhitePixels(pScreen);
 
-	if (nouveau_present_init(pScreen))
+	if (pNv->AccelMethod == EXA && nouveau_present_init(pScreen))
 		xf86DrvMsg(pScrn->scrnIndex, X_INFO,
 			   "Hardware support for Present enabled\n");
 	else
