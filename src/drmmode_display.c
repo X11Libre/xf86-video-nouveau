@@ -1545,7 +1545,7 @@ drmmode_xf86crtc_resize(ScrnInfoPtr scrn, int width, int height)
 	}
 
 	ppix = screen->GetScreenPixmap(screen);
-	if (pNv->AccelMethod >= NONE)
+	if (pNv->AccelMethod > NONE)
 		nouveau_bo_ref(pNv->scanout, &drmmode_pixmap(ppix)->bo);
 	screen->ModifyPixmapHeader(ppix, width, height, -1, -1, pitch,
 				   (pNv->AccelMethod > NONE || pNv->ShadowPtr) ?
