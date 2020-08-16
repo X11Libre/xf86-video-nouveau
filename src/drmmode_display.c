@@ -159,6 +159,8 @@ drmmode_events = {
 	.prev = &drmmode_events,
 };
 
+static bool warned = false;
+
 static void
 drmmode_event_handler(int fd, unsigned int frame, unsigned int tv_sec,
 		      unsigned int tv_usec, void *event_data)
@@ -166,13 +168,22 @@ drmmode_event_handler(int fd, unsigned int frame, unsigned int tv_sec,
 	const uint64_t ust = (uint64_t)tv_sec * 1000000 + tv_usec;
 	struct drmmode_event *e = event_data;
 
+	int counter = 0;
+
 	xorg_list_for_each_entry(e, &drmmode_events, head) {
+		counter++;
 		if (e == event_data) {
 			xorg_list_del(&e->head);
 			e->func((void *)(e + 1), e->name, ust, frame);
 			free(e);
 			break;
 		}
+	}
+
+	if (counter > 100 && !warned) {
+		xf86DrvMsg(0, X_WARNING,
+			   "Event handler iterated %d times\n", counter);
+		warned = true;
 	}
 }
 
