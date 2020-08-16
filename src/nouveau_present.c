@@ -113,8 +113,19 @@ nouveau_present_vblank_queue(RRCrtcPtr rrcrtc, uint64_t event_id, uint64_t msc)
 	args.request.signal = (unsigned long)token;
 
 	while ((ret = drmWaitVBlank(pNv->dev->fd, &args)) != 0) {
-		if (errno != EBUSY || drmmode_event_flush(crtc->scrn) < 0)
+		if (errno != EBUSY) {
+			xf86DrvMsgVerb(crtc->scrn->scrnIndex, X_WARNING, 4,
+				   "PRESENT: Wait for VBlank failed: %s\n", strerror(errno));
+			drmmode_event_abort(crtc->scrn, event_id, false);
 			return BadAlloc;
+		}
+		ret = drmmode_event_flush(crtc->scrn);
+		if (ret < 0) {
+			xf86DrvMsgVerb(crtc->scrn->scrnIndex, X_WARNING, 4,
+				   "PRESENT: Event flush failed\n");
+			drmmode_event_abort(crtc->scrn, event_id, false);
+			return BadAlloc;
+		}
 	}
 
 	return Success;
