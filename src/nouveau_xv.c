@@ -203,15 +203,19 @@ static XF86ImageRec NVImages[NUM_IMAGES_ALL] =
 };
 
 static void
-nouveau_box_intersect(BoxPtr dest, BoxPtr a, BoxPtr b)
+box_intersect(BoxPtr dest, BoxPtr a, BoxPtr b)
 {
-    dest->x1 = a->x1 > b->x1 ? a->x1 : b->x1;
-    dest->x2 = a->x2 < b->x2 ? a->x2 : b->x2;
-    dest->y1 = a->y1 > b->y1 ? a->y1 : b->y1;
-    dest->y2 = a->y2 < b->y2 ? a->y2 : b->y2;
+	dest->x1 = a->x1 > b->x1 ? a->x1 : b->x1;
+	dest->x2 = a->x2 < b->x2 ? a->x2 : b->x2;
+	if (dest->x1 >= dest->x2) {
+		dest->x1 = dest->x2 = dest->y1 = dest->y2 = 0;
+		return;
+	}
 
-    if (dest->x1 >= dest->x2 || dest->y1 >= dest->y2)
-	dest->x1 = dest->x2 = dest->y1 = dest->y2 = 0;
+	dest->y1 = a->y1 > b->y1 ? a->y1 : b->y1;
+	dest->y2 = a->y2 < b->y2 ? a->y2 : b->y2;
+	if (dest->y1 >= dest->y2)
+		dest->x1 = dest->x2 = dest->y1 = dest->y2 = 0;
 }
 
 static void
@@ -227,7 +231,7 @@ nouveau_crtc_box(xf86CrtcPtr crtc, BoxPtr crtc_box)
 }
 
 static int
-nouveau_box_area(BoxPtr box)
+box_area(BoxPtr box)
 {
     return (int) (box->x2 - box->x1) * (int) (box->y2 - box->y1);
 }
@@ -267,8 +271,8 @@ nouveau_pick_best_crtc(ScrnInfoPtr pScrn, Bool consider_disabled,
 	    continue;
 
 	nouveau_crtc_box(crtc, &crtc_box);
-	nouveau_box_intersect(&cover_box, &crtc_box, &box);
-	coverage = nouveau_box_area(&cover_box);
+	box_intersect(&cover_box, &crtc_box, &box);
+	coverage = box_area(&cover_box);
 	if (coverage > best_coverage ||
 	    (coverage == best_coverage && crtc == primary_crtc)) {
 	    best_crtc = crtc;
@@ -283,8 +287,8 @@ nouveau_pick_best_crtc(ScrnInfoPtr pScrn, Bool consider_disabled,
 	xf86CrtcPtr crtc = xf86_config->crtc[c];
 
 	nouveau_crtc_box(crtc, &crtc_box);
-	nouveau_box_intersect(&cover_box, &crtc_box, &box);
-	coverage = nouveau_box_area(&cover_box);
+	box_intersect(&cover_box, &crtc_box, &box);
+	coverage = box_area(&cover_box);
 	if (coverage > best_coverage ||
 	    (coverage == best_coverage && crtc == primary_crtc)) {
 	    best_crtc = crtc;
@@ -304,7 +308,7 @@ nv_window_belongs_to_crtc(ScrnInfoPtr pScrn, int x, int y, int w, int h)
 	for (i = 0; i < xf86_config->num_crtc; i++) {
 		xf86CrtcPtr crtc = xf86_config->crtc[i];
 
-		if (!drmmode_crtc_on(crtc))
+		if (!xf86_crtc_on(crtc))
 			continue;
 
 		if ((x < (crtc->x + crtc->mode.HDisplay)) &&

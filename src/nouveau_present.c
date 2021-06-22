@@ -162,7 +162,7 @@ nouveau_present_flip_check(RRCrtcPtr rrcrtc, WindowPtr window,
 	xf86CrtcPtr crtc = rrcrtc->devPrivate;
 	struct nouveau_pixmap *priv = nouveau_pixmap(pixmap);
 
-	if (!scrn->vtSema || !drmmode_crtc_on(crtc) || crtc->rotatedData)
+	if (!scrn->vtSema || !xf86_crtc_on(crtc) || crtc->rotatedData)
 		return FALSE;
 
 	if (!priv) {
@@ -220,7 +220,7 @@ nouveau_present_flip_exec(ScrnInfoPtr scrn, uint64_t event_id, int sync,
 			flip->msc = target_msc;
 
 			for (i = 0; i < config->num_crtc; i++) {
-				if (drmmode_crtc_on(config->crtc[i]))
+				if (xf86_crtc_on(config->crtc[i]))
 					last = i;
 			}
 
@@ -229,7 +229,7 @@ nouveau_present_flip_exec(ScrnInfoPtr scrn, uint64_t event_id, int sync,
 				int crtc = drmmode_crtc(config->crtc[i]);
 				void *user = NULL;
 
-				if (!drmmode_crtc_on(config->crtc[i]))
+				if (!xf86_crtc_on(config->crtc[i]))
 					continue;
 
 				if (token && ((crtc == sync) || (i == last))) {

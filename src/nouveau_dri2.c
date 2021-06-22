@@ -301,7 +301,7 @@ can_exchange(DrawablePtr draw, PixmapPtr dst_pix, PixmapPtr src_pix)
 
 	for (i = 0; i < xf86_config->num_crtc; i++) {
 		xf86CrtcPtr crtc = xf86_config->crtc[i];
-		if (drmmode_crtc_on(crtc)) {
+		if (xf86_crtc_on(crtc)) {
 			if (crtc->rotatedData)
 				return FALSE;
 
@@ -494,7 +494,7 @@ dri2_page_flip(DrawablePtr draw, PixmapPtr back, void *priv,
 		int head = drmmode_crtc(config->crtc[i]);
 		void *token;
 
-		if (!drmmode_crtc_on(config->crtc[i]))
+		if (!xf86_crtc_on(config->crtc[i]))
 			continue;
 
 		flipdata->flip_count++;

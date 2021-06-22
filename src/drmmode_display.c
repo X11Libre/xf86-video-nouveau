@@ -116,7 +116,7 @@ drmmode_crtc(xf86CrtcPtr crtc)
 }
 
 Bool
-drmmode_crtc_on(xf86CrtcPtr crtc)
+xf86_crtc_on(xf86CrtcPtr crtc)
 {
     drmmode_crtc_private_ptr drmmode_crtc = crtc->driver_private;
 
