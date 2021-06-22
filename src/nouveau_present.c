@@ -34,19 +34,7 @@ struct nouveau_present {
 static RRCrtcPtr
 nouveau_present_crtc(WindowPtr window)
 {
-	ScrnInfoPtr scrn = xf86ScreenToScrn(window->drawable.pScreen);
-	xf86CrtcPtr crtc;
-
-	crtc = nouveau_pick_best_crtc(scrn, FALSE,
-                                  window->drawable.x,
-                                  window->drawable.y,
-                                  window->drawable.width,
-                                  window->drawable.height);
-
-	if (!crtc)
-		return NULL;
-
-	return crtc->randr_crtc;
+	return randr_crtc_covering_drawable(&window->drawable);
 }
 
 static int
