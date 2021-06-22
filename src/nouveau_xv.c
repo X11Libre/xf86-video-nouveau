@@ -218,18 +218,6 @@ box_intersect(BoxPtr dest, BoxPtr a, BoxPtr b)
 		dest->x1 = dest->x2 = dest->y1 = dest->y2 = 0;
 }
 
-static void
-nouveau_crtc_box(xf86CrtcPtr crtc, BoxPtr crtc_box)
-{
-    if (crtc->enabled) {
-	crtc_box->x1 = crtc->x;
-	crtc_box->x2 = crtc->x + xf86ModeWidth(&crtc->mode, crtc->rotation);
-	crtc_box->y1 = crtc->y;
-	crtc_box->y2 = crtc->y + xf86ModeHeight(&crtc->mode, crtc->rotation);
-    } else
-	crtc_box->x1 = crtc_box->x2 = crtc_box->y1 = crtc_box->y2 = 0;
-}
-
 static int
 box_area(BoxPtr box)
 {
@@ -370,11 +358,9 @@ xf86CrtcPtr
 nouveau_pick_best_crtc(ScrnInfoPtr pScrn,
                        int x, int y, int w, int h)
 {
-    xf86CrtcConfigPtr   xf86_config = XF86_CRTC_CONFIG_PTR(pScrn);
-    int                 coverage, best_coverage, c;
-    BoxRec              box, crtc_box, cover_box;
-    RROutputPtr         primary_output = NULL;
-    xf86CrtcPtr         best_crtc = NULL, primary_crtc = NULL;
+    ScreenPtr pScreen = pScrn->pScreen;
+    RRCrtcPtr crtc = NULL;
+    BoxRec box;
 
     if (!pScrn->vtSema)
 	return NULL;
@@ -383,34 +369,12 @@ nouveau_pick_best_crtc(ScrnInfoPtr pScrn,
     box.x2 = x + w;
     box.y1 = y;
     box.y2 = y + h;
-    best_coverage = 0;
 
-    /* Prefer the CRTC of the primary output */
-    if (dixPrivateKeyRegistered(rrPrivKey))
-    {
-	primary_output = RRFirstOutput(pScrn->pScreen);
+    crtc = rr_crtc_covering_box(pScreen, &box, TRUE);
+    if (crtc) {
+	return crtc->devPrivate;
     }
-    if (primary_output && primary_output->crtc)
-	primary_crtc = primary_output->crtc->devPrivate;
-
-    /* first consider only enabled CRTCs */
-    for (c = 0; c < xf86_config->num_crtc; c++) {
-	xf86CrtcPtr crtc = xf86_config->crtc[c];
-
-	if (!crtc->enabled)
-	    continue;
-
-	nouveau_crtc_box(crtc, &crtc_box);
-	box_intersect(&cover_box, &crtc_box, &box);
-	coverage = box_area(&cover_box);
-	if (coverage > best_coverage ||
-	    (coverage == best_coverage && crtc == primary_crtc)) {
-	    best_crtc = crtc;
-	    best_coverage = coverage;
-	}
-    }
-
-    return best_crtc;
+    return NULL;
 }
 
 unsigned int
