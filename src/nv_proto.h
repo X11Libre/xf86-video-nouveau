@@ -45,7 +45,7 @@ void NVTakedownVideo(ScrnInfoPtr);
 void NVSetPortDefaults (ScrnInfoPtr pScrn, NVPortPrivPtr pPriv);
 void NVXVComputeBicubicFilter(struct nouveau_bo *, unsigned, unsigned);
 unsigned int nv_window_belongs_to_crtc(ScrnInfoPtr, int, int, int, int);
-xf86CrtcPtr nouveau_pick_best_crtc(ScrnInfoPtr pScrn, Bool consider_disabled,
+xf86CrtcPtr nouveau_pick_best_crtc(ScrnInfoPtr pScrn,
                                    int x, int y, int w, int h);
 
 /* in nouveau_exa.c */

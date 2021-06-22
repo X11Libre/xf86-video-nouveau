@@ -237,7 +237,7 @@ box_area(BoxPtr box)
 }
 
 xf86CrtcPtr
-nouveau_pick_best_crtc(ScrnInfoPtr pScrn, Bool consider_disabled,
+nouveau_pick_best_crtc(ScrnInfoPtr pScrn,
                        int x, int y, int w, int h)
 {
     xf86CrtcConfigPtr   xf86_config = XF86_CRTC_CONFIG_PTR(pScrn);
@@ -279,22 +279,7 @@ nouveau_pick_best_crtc(ScrnInfoPtr pScrn, Bool consider_disabled,
 	    best_coverage = coverage;
 	}
     }
-    if (best_crtc || !consider_disabled)
-	return best_crtc;
 
-    /* if we found nothing, repeat the search including disabled CRTCs */
-    for (c = 0; c < xf86_config->num_crtc; c++) {
-	xf86CrtcPtr crtc = xf86_config->crtc[c];
-
-	nouveau_crtc_box(crtc, &crtc_box);
-	box_intersect(&cover_box, &crtc_box, &box);
-	coverage = box_area(&cover_box);
-	if (coverage > best_coverage ||
-	    (coverage == best_coverage && crtc == primary_crtc)) {
-	    best_crtc = crtc;
-	    best_coverage = coverage;
-	}
-    }
     return best_crtc;
 }
 

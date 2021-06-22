@@ -599,8 +599,8 @@ nouveau_wait_vblank(DrawablePtr draw, int type, CARD64 msc,
 	int head;
 
 	/* Select crtc which shows the largest part of the drawable */
-	crtc = nouveau_pick_best_crtc(scrn, FALSE,
-                                  draw->x, draw->y, draw->width, draw->height);
+	crtc = nouveau_pick_best_crtc(scrn,
+				      draw->x, draw->y, draw->width, draw->height);
 
 	if (!crtc) {
 		xf86DrvMsg(scrn->scrnIndex, X_WARNING,
@@ -677,8 +677,8 @@ nouveau_dri2_finish_swap(DrawablePtr draw, unsigned int frame,
 	REGION_TRANSLATE(0, &reg, draw->x, draw->y);
 
 	/* Main crtc for this drawable shall finally deliver pageflip event. */
-	ref_crtc = nouveau_pick_best_crtc(scrn, FALSE, draw->x, draw->y,
-                                      draw->width, draw->height);
+	ref_crtc = nouveau_pick_best_crtc(scrn, draw->x, draw->y,
+					  draw->width, draw->height);
 
 	/* Update frontbuffer pixmap and name: Could have changed due to
 	 * window (un)redirection as part of compositing.
