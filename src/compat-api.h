@@ -66,4 +66,7 @@
 
 #if ABI_VIDEODRV_VERSION < SET_ABI_VERSION(25, 2)
 #define secondary_dst slave_dst
+#define secondary_list slave_list
+#define secondary_head slave_head
+#define is_output_secondary is_output_slave
 #endif
