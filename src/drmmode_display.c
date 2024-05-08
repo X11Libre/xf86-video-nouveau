@@ -696,7 +696,7 @@ drmmode_crtc_init(ScrnInfoPtr pScrn, drmmode_ptr drmmode, drmModeResPtr mode_res
 	if (crtc == NULL)
 		return 0;
 
-	drmmode_crtc = xnfcalloc(sizeof(drmmode_crtc_private_rec), 1);
+	drmmode_crtc = XNFcallocarray(sizeof(drmmode_crtc_private_rec), 1);
 	drmmode_crtc->mode_crtc = drmModeGetCrtc(drmmode->fd,
 						 mode_res->crtcs[num]);
 	drmmode_crtc->drmmode = drmmode;
@@ -1500,7 +1500,7 @@ Bool drmmode_pre_init(ScrnInfoPtr pScrn, int fd, int cpp)
 	unsigned int crtcs_needed = 0;
 	int crtcshift;
 
-	drmmode = xnfcalloc(sizeof(*drmmode), 1);
+	drmmode = XNFcallocarray(sizeof(*drmmode), 1);
 	drmmode->fd = fd;
 	drmmode->fb_id = 0;
 

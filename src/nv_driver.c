@@ -270,7 +270,7 @@ NVInitScrn(ScrnInfoPtr pScrn, struct xf86_platform_device *platform_dev,
 	pPriv = xf86GetEntityPrivate(entity_num,
 				     NVEntityIndex);
 	if (!pPriv->ptr) {
-		pPriv->ptr = xnfcalloc(sizeof(NVEntRec), 1);
+		pPriv->ptr = XNFcallocarray(sizeof(NVEntRec), 1);
 		pNVEnt = pPriv->ptr;
 		pNVEnt->platform_dev = platform_dev;
 	}
@@ -863,7 +863,7 @@ NVPreInit(ScrnInfoPtr pScrn, int flags)
 		return FALSE;
 
 	/* Allocate the NVRec driverPrivate */
-	if (!(pScrn->driverPrivate = xnfcalloc(1, sizeof(NVRec))))
+	if (!(pScrn->driverPrivate = XNFcallocarray(1, sizeof(NVRec))))
 		return FALSE;
 	pNv = NVPTR(pScrn);
 
