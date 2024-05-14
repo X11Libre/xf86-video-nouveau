@@ -37,11 +37,6 @@
 #include "nouveau_present.h"
 #include "nouveau_sync.h"
 
-#if !HAVE_XORG_LIST
-#define xorg_list_is_empty              list_is_empty
-#define xorg_list_for_each_entry        list_for_each_entry
-#endif
-
 /*
  * Forward definitions for the functions that make up the driver.
  */

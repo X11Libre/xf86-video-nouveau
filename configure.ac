@@ -118,12 +118,6 @@ AC_CHECK_DECL(xf86CursorResetCursor,
               [#include <xorg-server.h>
                #include <xf86Cursor.h>])
 
-AC_CHECK_DECL(xorg_list_init,
-              [AC_DEFINE(HAVE_XORG_LIST, 1, [Have xorg_list API])], [],
-              [#include <X11/Xdefs.h>
-               #include "xorg-server.h"
-               #include "list.h"])
-
 AC_CONFIG_FILES([
 	Makefile
 	src/Makefile
