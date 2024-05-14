@@ -236,10 +236,8 @@ NVDriverFunc(ScrnInfoPtr scrn, xorgDriverFuncOp op, void *data)
 	    flag = (CARD32 *)data;
 	    (*flag) = 0;
 	    return TRUE;
-#if XORG_VERSION_CURRENT > XORG_VERSION_NUMERIC(1,15,99,0,0)
 	case SUPPORTS_SERVER_FDS:
 	    return TRUE;
-#endif
 	default:
 	    return FALSE;
     }
@@ -304,15 +302,9 @@ NVOpenNouveauDevice(struct pci_device *pci_dev,
 	else
 #endif
 	{
-#if XORG_VERSION_CURRENT >= XORG_VERSION_NUMERIC(1,9,99,901,0)
 		XNFasprintf(&busid, "pci:%04x:%02x:%02x.%d",
 			    pci_dev->domain, pci_dev->bus,
 			    pci_dev->dev, pci_dev->func);
-#else
-		busid = XNFprintf("pci:%04x:%02x:%02x.%d",
-				  pci_dev->domain, pci_dev->bus,
-				  pci_dev->dev, pci_dev->func);
-#endif
 	}
 
 #if defined(ODEV_ATTRIB_FD)
@@ -557,11 +549,7 @@ redisplay_dirty(ScreenPtr screen, PixmapDirtyUpdatePtr dirty)
 	PixmapRegionInit(&pixregion, dirty->secondary_dst);
 
 	DamageRegionAppend(&dirty->secondary_dst->drawable, &pixregion);
-#ifdef HAS_DIRTYTRACKING_ROTATION
 	PixmapSyncDirtyHelper(dirty);
-#else
-	PixmapSyncDirtyHelper(dirty, &pixregion);
-#endif
 
 	DamageRegionProcessPending(&dirty->secondary_dst->drawable);
 	RegionUninit(&pixregion);

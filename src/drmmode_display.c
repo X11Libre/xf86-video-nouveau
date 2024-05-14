@@ -336,99 +336,6 @@ drmmode_fbcon_copy(ScreenPtr pScreen)
 {
 	ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
 	NVPtr pNv = NVPTR(pScrn);
-#if XORG_VERSION_CURRENT >= 10999001
-	ExaDriverPtr exa = pNv->EXADriverPtr;
-	xf86CrtcConfigPtr xf86_config = XF86_CRTC_CONFIG_PTR(pScrn);
-	struct nouveau_bo *bo = NULL;
-	PixmapPtr pspix, pdpix = NULL;
-	drmModeFBPtr fb;
-	unsigned w = pScrn->virtualX, h = pScrn->virtualY;
-	int i, ret, fbcon_id = 0;
-
-	if (pNv->AccelMethod != EXA)
-		goto fallback;
-
-	pdpix = drmmode_pixmap_wrap(pScreen, pScrn->virtualX,
-				    pScrn->virtualY, pScrn->depth,
-				    pScrn->bitsPerPixel, pScrn->displayWidth *
-				    pScrn->bitsPerPixel / 8, pNv->scanout,
-				    NULL);
-	if (!pdpix) {
-		xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
-			   "Failed to init scanout pixmap for fbcon mirror\n");
-		goto fallback;
-	}
-
-	for (i = 0; i < xf86_config->num_crtc; i++) {
-		drmmode_crtc_private_ptr drmmode_crtc =
-			xf86_config->crtc[i]->driver_private;
-
-		if (drmmode_crtc->mode_crtc->buffer_id)
-			fbcon_id = drmmode_crtc->mode_crtc->buffer_id;
-	}
-
-	if (!fbcon_id)
-		goto fallback;
-
-	fb = drmModeGetFB(pNv->dev->fd, fbcon_id);
-	if (!fb) {
-		xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
-			   "Failed to retrieve fbcon fb: id %d\n", fbcon_id);
-		goto fallback;
-	}
-
-	if (fb->depth != pScrn->depth || fb->width != w || fb->height != h) {
-		drmFree(fb);
-		goto fallback;
-	}
-
-	ret = nouveau_bo_wrap(pNv->dev, fb->handle, &bo);
-	if (ret) {
-		xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
-			   "Failed to retrieve fbcon buffer: handle=0x%08x\n",
-			   fb->handle);
-		drmFree(fb);
-		goto fallback;
-	}
-
-	pspix = drmmode_pixmap_wrap(pScreen, fb->width, fb->height,
-				    fb->depth, fb->bpp, fb->pitch, bo, NULL);
-	nouveau_bo_ref(NULL, &bo);
-	drmFree(fb);
-	if (!pspix) {
-		xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
-			   "Failed to create pixmap for fbcon contents\n");
-		goto fallback;
-	}
-
-	exa->PrepareCopy(pspix, pdpix, 0, 0, GXcopy, ~0);
-	exa->Copy(pdpix, 0, 0, 0, 0, w, h);
-	exa->DoneCopy(pdpix);
-	PUSH_KICK(pNv->pushbuf);
-
-	/* wait for completion before continuing, avoids seeing a momentary
-	 * flash of "corruption" on occasion
-	 */
-	nouveau_bo_wait(pNv->scanout, NOUVEAU_BO_RDWR, pNv->client);
-
-	pScreen->DestroyPixmap(pdpix);
-	pScreen->DestroyPixmap(pspix);
-	pScreen->canDoBGNoneRoot = TRUE;
-	return;
-
-fallback:
-	if (pdpix) {
-		if (exa->PrepareSolid(pdpix, GXcopy, ~0, 0)) {
-			exa->Solid(pdpix, 0, 0, w, h);
-			exa->DoneSolid(pdpix);
-			PUSH_KICK(pNv->pushbuf);
-			nouveau_bo_wait(pNv->scanout, NOUVEAU_BO_RDWR, pNv->client);
-			pScreen->DestroyPixmap(pdpix);
-			return;
-		}
-		pScreen->DestroyPixmap(pdpix);
-	}
-#endif
 	if (nouveau_bo_map(pNv->scanout, NOUVEAU_BO_WR, pNv->client))
 		return;
 	memset(pNv->scanout->map, 0x00, pNv->scanout->size);
@@ -734,12 +641,6 @@ drmmode_set_scanout_pixmap(xf86CrtcPtr crtc, PixmapPtr ppix)
 			if (max_height < iter->mode.VDisplay)
 				max_height = iter->mode.VDisplay;
 		}
-#if !defined(HAS_DIRTYTRACKING_ROTATION) && !defined(HAS_DIRTYTRACKING2)
-	if (iter != crtc) {
-		ErrorF("Cannot do multiple crtcs without X server dirty tracking 2 interface\n");
-		return FALSE;
-	}
-#endif
 	}
 
 	if (total_width != screenpix->drawable.width ||
@@ -757,12 +658,8 @@ drmmode_set_scanout_pixmap(xf86CrtcPtr crtc, PixmapPtr ppix)
 
 #ifdef HAS_DIRTYTRACKING_DRAWABLE_SRC
 	PixmapStartDirtyTracking(&ppix->drawable, screenpix, 0, 0, this_x, 0, RR_Rotate_0);
-#elif defined(HAS_DIRTYTRACKING_ROTATION)
-	PixmapStartDirtyTracking(ppix, screenpix, 0, 0, this_x, 0, RR_Rotate_0);
-#elif defined(HAS_DIRTYTRACKING2)
-	PixmapStartDirtyTracking2(ppix, screenpix, 0, 0, this_x, 0);
 #else
-	PixmapStartDirtyTracking(ppix, screenpix, 0, 0);
+	PixmapStartDirtyTracking(ppix, screenpix, 0, 0, this_x, 0, RR_Rotate_0);
 #endif
 	return TRUE;
 }
