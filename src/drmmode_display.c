@@ -1450,9 +1450,6 @@ drmmode_xf86crtc_resize(ScrnInfoPtr scrn, int width, int height)
 	screen->ModifyPixmapHeader(ppix, width, height, -1, -1, pitch,
 				   (pNv->AccelMethod > NONE || pNv->ShadowPtr) ?
 				   pNv->ShadowPtr : pNv->scanout->map);
-#if GET_ABI_MAJOR(ABI_VIDEODRV_VERSION) < 9
-	scrn->pixmapPrivate.ptr = ppix->devPrivate.ptr;
-#endif
 
 	if (pNv->AccelMethod == EXA) {
 		pNv->EXADriverPtr->PrepareSolid(ppix, GXcopy, ~0, 0);
