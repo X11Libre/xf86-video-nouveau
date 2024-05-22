@@ -1751,11 +1751,7 @@ drmmode_udev_notify(int fd, int notify, void *data)
 
 static bool has_randr(void)
 {
-#if HAS_DIXREGISTERPRIVATEKEY
 	return dixPrivateKeyRegistered(rrPrivKey);
-#else
-	return *rrPrivKey;
-#endif
 }
 
 static void

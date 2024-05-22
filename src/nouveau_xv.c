@@ -252,9 +252,7 @@ nouveau_pick_best_crtc(ScrnInfoPtr pScrn, Bool consider_disabled,
     best_coverage = 0;
 
     /* Prefer the CRTC of the primary output */
-#ifdef HAS_DIXREGISTERPRIVATEKEY
     if (dixPrivateKeyRegistered(rrPrivKey))
-#endif
     {
 	primary_output = RRFirstOutput(pScrn->pScreen);
     }
