@@ -60,8 +60,6 @@
 #define VT_FUNC_ARGS_DECL ScrnInfoPtr arg
 #define VT_FUNC_ARGS(flags) pScrn
 
-#define XF86_ENABLEDISABLEFB_ARG(x) (x)
-
 #endif
 
 #if ABI_VIDEODRV_VERSION < SET_ABI_VERSION(25, 2)
