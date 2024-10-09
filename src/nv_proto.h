@@ -229,5 +229,15 @@ extern void exaMoveInPixmap(PixmapPtr pPixmap);
 
 extern Bool wfbPictureInit(ScreenPtr, PictFormatPtr, int);
 
+extern Bool wfbScreenInit(ScreenPtr pScreen,
+              void *pbits,
+              int xsize,
+              int ysize,
+              int dpix,
+              int dpiy,
+              int width,
+              int bpp,
+              SetupWrapProcPtr setupWrap, FinishWrapProcPtr finishWrap);
+
 #endif /* __NV_PROTO_H__ */
 
