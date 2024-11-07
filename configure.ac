@@ -23,7 +23,7 @@
 # Initialize Autoconf
 AC_PREREQ([2.60])
 AC_INIT([xf86-video-nouveau],
-        [1.0.17],
+        [1.0.18],
         [https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau/-/issues/],
         [xf86-video-nouveau])
 
