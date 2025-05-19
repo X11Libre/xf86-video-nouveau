@@ -559,10 +559,6 @@ NVVideoTimerCallback(ScrnInfoPtr pScrn, Time currentTime)
 	pNv->VideoTimerCallback = needCallback ? NVVideoTimerCallback : NULL;
 }
 
-#ifndef ExaOffscreenMarkUsed
-extern void ExaOffscreenMarkUsed(PixmapPtr);
-#endif
-
 /*
  * StopVideo
  */
