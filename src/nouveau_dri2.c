@@ -100,7 +100,7 @@ nouveau_dri2_create_buffer2(ScreenPtr pScreen, DrawablePtr pDraw, unsigned int a
 		nvpix = nouveau_pixmap(ppix);
 		if (!nvpix || !nvpix->bo ||
 		    nouveau_bo_name_get(nvpix->bo, &nvbuf->base.name)) {
-			dixDestroyPixmap(nvbuf->ppix, 0);
+			pScreen->DestroyPixmap(nvbuf->ppix);
 			free(nvbuf);
 			return NULL;
 		}
@@ -126,7 +126,7 @@ nouveau_dri2_destroy_buffer2(ScreenPtr pScreen, DrawablePtr pDraw, DRI2BufferPtr
 		return;
 
 	if (nvbuf->ppix)
-	    dixDestroyPixmap(nvbuf->ppix, 0);
+	    pScreen->DestroyPixmap(nvbuf->ppix);
 	free(nvbuf);
 }
 
@@ -274,12 +274,12 @@ update_front(DrawablePtr draw, DRI2BufferPtr front)
 		r = nouveau_bo_name_get(pixmap_bo, &front->name);
 
 	if (r) {
-		dixDestroyPixmap(pixmap, 0);
+		(*draw->pScreen->DestroyPixmap)(pixmap);
 		return FALSE;
 	}
 
 	if (nvbuf->ppix)
-		dixDestroyPixmap(nvbuf->ppix, 0);
+		(*draw->pScreen->DestroyPixmap)(nvbuf->ppix);
 
 	front->pitch = pixmap->devKind;
 	front->cpp = pixmap->drawable.bitsPerPixel / 8;
@@ -1110,7 +1110,7 @@ static PixmapPtr nouveau_dri3_pixmap_from_fd(ScreenPtr screen, int fd, CARD16 wi
 	return pixmap;
 
 free_pixmap:
-	dixDestroyPixmap(pixmap, 0);
+	screen->DestroyPixmap(pixmap);
 	return NULL;
 }
 
