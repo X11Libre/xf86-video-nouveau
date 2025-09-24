@@ -25,6 +25,9 @@
 #include "config.h"
 #endif
 
+#include <xorg-server.h>
+#include <extinit.h>
+
 #ifdef __SSE2__
 #include <immintrin.h>
 #endif
