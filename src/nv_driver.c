@@ -293,7 +293,7 @@ NVOpenNouveauDevice(struct pci_device *pci_dev,
 	struct xf86_platform_device *platform_dev, int scrnIndex, Bool probe)
 {
 	struct nouveau_device *dev = NULL;
-	char *busid;
+	char *busid = NULL;
 	int ret, fd = -1;
 
 #ifdef ODEV_ATTRIB_PATH
@@ -302,9 +302,14 @@ NVOpenNouveauDevice(struct pci_device *pci_dev,
 	else
 #endif
 	{
-		XNFasprintf(&busid, "pci:%04x:%02x:%02x.%d",
+		if (asprintf(&busid, "pci:%04x:%02x:%02x.%d",
 			    pci_dev->domain, pci_dev->bus,
-			    pci_dev->dev, pci_dev->func);
+			    pci_dev->dev, pci_dev->func) == -1)
+		{
+			xf86DrvMsg(scrnIndex, X_ERROR,
+				   "failed to allocate memory for busid\n");
+			return NULL;
+		}
 	}
 
 #if defined(ODEV_ATTRIB_FD)
