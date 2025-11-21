@@ -4,6 +4,7 @@
 #include <errno.h>
 
 #include "xorg-server.h"
+#include "regionstr.h"
 #include "nv_include.h"
 #ifdef DRI2
 #include "dri2.h"

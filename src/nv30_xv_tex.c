@@ -32,6 +32,7 @@
 #include "damage.h"
 #include "dixstruct.h"
 #include "fourcc.h"
+#include "regionstr.h"
 
 #include "nv_include.h"
 #include "nv_dma.h"

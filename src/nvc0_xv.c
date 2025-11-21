@@ -24,8 +24,10 @@
 #include "config.h"
 #endif
 
-#include "xf86xv.h"
 #include <X11/extensions/Xv.h>
+
+#include "xf86xv.h"
+#include "regionstr.h"
 #include "exa.h"
 #include "damage.h"
 #include "dixstruct.h"

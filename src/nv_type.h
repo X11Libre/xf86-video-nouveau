@@ -5,6 +5,7 @@
 #include "xf86Cursor.h"
 #include "exa.h"
 #include "xf86drm.h"
+#include "regionstr.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include "xf86Crtc.h"
