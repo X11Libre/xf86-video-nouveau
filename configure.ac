@@ -22,10 +22,10 @@
 
 # Initialize Autoconf
 AC_PREREQ([2.60])
-AC_INIT([xf86-video-nouveau],
+AC_INIT([xlibre-xf86-video-nouveau],
         [1.0.18],
-        [https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau/-/issues/],
-        [xf86-video-nouveau])
+        [https://github.com/X11Libre/xf86-video-nouveau/issues],
+        [xlibre-xf86-video-nouveau])
 
 AC_DEFINE_UNQUOTED([NV_DRIVER_DATE],
                    [$(echo -n \";git log |head -3|tail -1|tr -d '\n';echo -n \")],
