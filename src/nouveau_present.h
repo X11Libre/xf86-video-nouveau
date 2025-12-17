@@ -4,9 +4,7 @@
 #include "xorg-server.h"
 #include "scrnintstr.h"
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #if defined(DRI3)
 #include "present.h"

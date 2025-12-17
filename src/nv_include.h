@@ -1,9 +1,7 @@
 #ifndef __NV_INCLUDE_H__
 #define __NV_INCLUDE_H__
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <string.h>
 #include <math.h>
