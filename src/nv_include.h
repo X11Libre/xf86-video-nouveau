@@ -48,13 +48,7 @@
 #include "xf86DDC.h"
 
 #include <X11/extensions/randr.h>
-
-#ifdef HAVE_XEXTPROTO_71
 #include <X11/extensions/dpmsconst.h>
-#else
-#define DPMS_SERVER
-#include <X11/extensions/dpms.h>
-#endif
 
 #define NV_DMA_DEBUG 0
 
