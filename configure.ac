@@ -112,11 +112,7 @@ AC_CHECK_DECL(xf86CursorResetCursor,
               [#include <xorg-server.h>
                #include <xf86Cursor.h>])
 
-AC_CONFIG_FILES([
-	Makefile
-	src/Makefile
-	man/Makefile
-])
+AC_CONFIG_FILES([Makefile src/Makefile man/Makefile])
 AC_OUTPUT
 
 dnl
