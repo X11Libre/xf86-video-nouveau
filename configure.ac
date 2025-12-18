@@ -43,18 +43,14 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 # Require X.Org macros 1.8 or later for MAN_SUBSTS set by XORG_MANPAGE_SECTIONS
 m4_ifndef([XORG_MACROS_VERSION],
-          [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen
-           Hint: either install from source, https://gitlab.freedesktop.org/xorg/util/macros.git or,
-           depending on you distribution, try package 'xutils-dev' or 'xorg-x11-util-macros'])])
+          [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen])])
 
 XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
 
 # Require X.Org server macros (i.e. XORG_DRIVER_CHECK_EXT) to check for required modules
 m4_ifndef([XORG_DRIVER_CHECK_EXT],
-          [m4_fatal([must install xorg-server macros before running autoconf/autogen
-           Hint: either install from source, https://gitlab.freedesktop.org/xorg/xserver.git or,
-           depending on your distribution, try package 'xserver-xorg-dev' or 'xorg-x11-server-devel'])])
+          [m4_fatal([must install xorg-server macros before running autoconf/autogen])])
 
 # Initialize libtool
 LT_INIT([disable-static])
@@ -87,7 +83,7 @@ PKG_CHECK_MODULES([PCIACCESS], [pciaccess >= 0.10])
 
 PKG_CHECK_MODULES(LIBUDEV, [libudev], [LIBUDEV=yes], [LIBUDEV=no])
 if test "x$LIBUDEV" = xyes; then
-	AC_DEFINE(HAVE_LIBUDEV, 1, [libudev support])
+    AC_DEFINE(HAVE_LIBUDEV, 1, [libudev support])
 fi
 AM_CONDITIONAL(LIBUDEV, [ test "x$LIBUDEV" = "xyes" ] )
 
@@ -123,12 +119,10 @@ echo "        prefix:              $prefix"
 echo "        exec_prefix:         $exec_prefix"
 echo "        libdir:              $libdir"
 echo "        includedir:          $includedir"
-
 echo ""
 echo "        CFLAGS:              $CFLAGS"
 echo "        CXXFLAGS:            $CXXFLAGS"
 echo "        Macros:              $DEFINES"
-
 echo ""
 echo "        Run '${MAKE-make}' to build xf86-video-nouveau"
 echo ""
