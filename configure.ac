@@ -106,9 +106,6 @@ CFLAGS="$CFLAGS $XORG_CFLAGS"
 AC_SUBST([CFLAGS])
 AC_SUBST([moduledir])
 
-DRIVER_NAME=nouveau
-AC_SUBST([DRIVER_NAME])
-
 AC_CHECK_DECL(xf86CursorResetCursor,
               [AC_DEFINE(HAVE_XF86_CURSOR_RESET_CURSOR, 1,
               [Have xf86CursorResetCursor API])], [],
