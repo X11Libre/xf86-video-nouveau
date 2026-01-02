@@ -10,9 +10,7 @@
 #include <stdint.h>
 #include "xf86Crtc.h"
 
-#if XF86_CRTC_VERSION >= 5
 #define NOUVEAU_PIXMAP_SHARING 1
-#endif
 
 #define NV_ARCH_03  0x03
 #define NV_ARCH_04  0x04
