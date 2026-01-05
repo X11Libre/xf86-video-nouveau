@@ -155,7 +155,7 @@ NV40GetSurfaceFormat(PixmapPtr ppix, int *fmt_ret)
 }
 
 void
-NV40StopTexturedVideo(ScrnInfoPtr pScrn, pointer data, Bool Exit)
+NV40StopTexturedVideo(ScrnInfoPtr pScrn, void *data, Bool Exit)
 {
 }
 
@@ -342,7 +342,7 @@ NV40PutTextureImage(ScrnInfoPtr pScrn,
  */
 int
 NV40SetTexturePortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-                       INT32 value, pointer data)
+                       INT32 value, void *data)
 {
         NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 
@@ -372,7 +372,7 @@ NV40SetTexturePortAttribute(ScrnInfoPtr pScrn, Atom attribute,
  */
 int
 NV40GetTexturePortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-                       INT32 *value, pointer data)
+                       INT32 *value, void *data)
 {
         NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 

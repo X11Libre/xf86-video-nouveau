@@ -123,7 +123,7 @@ NV04PutOverlayImage(ScrnInfoPtr pScrn, struct nouveau_bo *src, int offset,
  */
 int
 NV04SetOverlayPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-                          INT32 value, pointer data)
+                          INT32 value, void *data)
 {
         NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 
@@ -160,7 +160,7 @@ NV04SetOverlayPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
  */
 int
 NV04GetOverlayPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-                          INT32 *value, pointer data)
+                          INT32 *value, void *data)
 {
         NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 

@@ -183,7 +183,7 @@ NVPutBlitImage(ScrnInfoPtr pScrn, struct nouveau_bo *src, int src_offset,
  */
 int
 NVSetBlitPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-		       INT32 value, pointer data)
+		       INT32 value, void *data)
 {
 	NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 	NVPtr	   pNv = NVPTR(pScrn);
@@ -214,7 +214,7 @@ NVSetBlitPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
  */
 int
 NVGetBlitPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-		       INT32 *value, pointer data)
+		       INT32 *value, void *data)
 {
 	NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 
@@ -230,7 +230,7 @@ NVGetBlitPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
  * NVStopBlitVideo
  */
 void
-NVStopBlitVideo(ScrnInfoPtr pScrn, pointer data, Bool Exit)
+NVStopBlitVideo(ScrnInfoPtr pScrn, void *data, Bool Exit)
 {
 }
 

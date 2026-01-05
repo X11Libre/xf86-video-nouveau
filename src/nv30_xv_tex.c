@@ -156,7 +156,7 @@ NV30GetSurfaceFormat(PixmapPtr ppix, int *fmt_ret)
 }
 
 void
-NV30StopTexturedVideo(ScrnInfoPtr pScrn, pointer data, Bool Exit)
+NV30StopTexturedVideo(ScrnInfoPtr pScrn, void *data, Bool Exit)
 {
 }
 
@@ -350,7 +350,7 @@ NV30PutTextureImage(ScrnInfoPtr pScrn, struct nouveau_bo *src, int src_offset,
  */
 int
 NV30SetTexturePortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-                       INT32 value, pointer data)
+                       INT32 value, void *data)
 {
         NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 
@@ -380,7 +380,7 @@ NV30SetTexturePortAttribute(ScrnInfoPtr pScrn, Atom attribute,
  */
 int
 NV30GetTexturePortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-                       INT32 *value, pointer data)
+                       INT32 *value, void *data)
 {
         NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 
