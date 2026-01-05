@@ -144,7 +144,7 @@ NV10PutOverlayImage(ScrnInfoPtr pScrn,
  */
 int
 NV10SetOverlayPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-                          INT32 value, pointer data)
+                          INT32 value, void *data)
 {
         NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 
@@ -222,7 +222,7 @@ NV10SetOverlayPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
  */
 int
 NV10GetOverlayPortAttribute(ScrnInfoPtr pScrn, Atom attribute,
-                          INT32 *value, pointer data)
+                          INT32 *value, void *data)
 {
         NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 

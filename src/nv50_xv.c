@@ -274,7 +274,7 @@ nv50_xv_image_put(ScrnInfoPtr pScrn,
 }
 
 void
-nv50_xv_video_stop(ScrnInfoPtr pScrn, pointer data, Bool exit)
+nv50_xv_video_stop(ScrnInfoPtr pScrn, void *data, Bool exit)
 {
 }
 
@@ -368,7 +368,7 @@ nv50_xv_set_port_defaults(ScrnInfoPtr pScrn, NVPortPrivPtr pPriv)
 
 int
 nv50_xv_port_attribute_set(ScrnInfoPtr pScrn, Atom attribute,
-			   INT32 value, pointer data)
+			   INT32 value, void *data)
 {
 	NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 
@@ -413,7 +413,7 @@ nv50_xv_port_attribute_set(ScrnInfoPtr pScrn, Atom attribute,
 
 int
 nv50_xv_port_attribute_get(ScrnInfoPtr pScrn, Atom attribute,
-			   INT32 *value, pointer data)
+			   INT32 *value, void* data)
 {
 	NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 

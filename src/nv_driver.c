@@ -163,8 +163,8 @@ static XF86ModuleVersionInfo nouveauVersRec =
 
 _X_EXPORT XF86ModuleData nouveauModuleData = { &nouveauVersRec, nouveauSetup, NULL };
 
-static pointer
-nouveauSetup(pointer module, pointer opts, int *errmaj, int *errmin)
+static void*
+nouveauSetup(void *module, void *opts, int *errmaj, int *errmin)
 {
 	static Bool setupDone = FALSE;
 
@@ -180,7 +180,7 @@ nouveauSetup(pointer module, pointer opts, int *errmaj, int *errmin)
 		 * The return value must be non-NULL on success even though there
 		 * is no TearDownProc.
 		 */
-		return (pointer)1;
+		return (void*)1;
 	} else {
 		if (errmaj) *errmaj = LDR_ONCEONLY;
 		return NULL;
@@ -533,7 +533,7 @@ NVLeaveVT(ScrnInfoPtr pScrn)
 }
 
 static void
-NVFlushCallback(CallbackListPtr *list, pointer user_data, pointer call_data)
+NVFlushCallback(CallbackListPtr *list, void *user_data, void *call_data)
 {
 	ScrnInfoPtr pScrn = user_data;
 	NVPtr pNv = NVPTR(pScrn);
@@ -576,7 +576,7 @@ nouveau_dirty_update(ScreenPtr screen)
 #endif
 
 static void 
-NVBlockHandler (ScreenPtr pScreen, pointer pTimeout)
+NVBlockHandler (ScreenPtr pScreen, void *pTimeout)
 {
 	ScrnInfoPtr pScrn   = xf86ScreenToScrn(pScreen);
 	NVPtr pNv = NVPTR(pScrn);

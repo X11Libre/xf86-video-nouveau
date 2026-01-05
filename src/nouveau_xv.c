@@ -563,7 +563,7 @@ NVVideoTimerCallback(ScrnInfoPtr pScrn, Time currentTime)
  * StopVideo
  */
 static void
-NVStopOverlayVideo(ScrnInfoPtr pScrn, pointer data, Bool Exit)
+NVStopOverlayVideo(ScrnInfoPtr pScrn, void *data, Bool Exit)
 {
 	NVPtr         pNv   = NVPTR(pScrn);
 	NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
@@ -611,7 +611,7 @@ NVQueryBestSize(ScrnInfoPtr pScrn, Bool motion,
 		short vid_w, short vid_h,
 		short drw_w, short drw_h,
 		unsigned int *p_w, unsigned int *p_h,
-		pointer data)
+		void *data)
 {
 	if(vid_w > (drw_w << 3))
 		drw_w = vid_w >> 3;
@@ -1121,7 +1121,7 @@ static int
 NVPutImage(ScrnInfoPtr pScrn, short src_x, short src_y, short drw_x,
 	   short drw_y, short src_w, short src_h, short drw_w, short drw_h,
 	   int id, unsigned char *buf, short width, short height,
-	   Bool Sync, RegionPtr clipBoxes, pointer data, DrawablePtr pDraw)
+	   Bool Sync, RegionPtr clipBoxes, void *data, DrawablePtr pDraw)
 {
 	NVPortPrivPtr pPriv = (NVPortPrivPtr)data;
 	NVPtr pNv = NVPTR(pScrn);
@@ -1613,7 +1613,7 @@ NVAllocSurface(ScrnInfoPtr pScrn, int id,
 	surface->pScrn = pScrn;
 	surface->pitches = &pPriv->pitch;
 	surface->offsets = &pPriv->offset;
-	surface->devPrivate.ptr = (pointer)pPriv;
+	surface->devPrivate.ptr = (void*)pPriv;
 	surface->id = id;
 
 	/* grab the video */
@@ -1659,7 +1659,7 @@ NVGetSurfaceAttribute(ScrnInfoPtr pScrn, Atom attribute, INT32 *value)
 	NVPortPrivPtr pPriv = GET_OVERLAY_PRIVATE(pNv);
 
 	return NV10GetOverlayPortAttribute(pScrn, attribute,
-					 value, (pointer)pPriv);
+					 value, (void*)pPriv);
 }
 
 static int
@@ -1669,7 +1669,7 @@ NVSetSurfaceAttribute(ScrnInfoPtr pScrn, Atom attribute, INT32 value)
 	NVPortPrivPtr pPriv = GET_OVERLAY_PRIVATE(pNv);
 
 	return NV10SetOverlayPortAttribute(pScrn, attribute,
-					 value, (pointer)pPriv);
+					 value, (void*)pPriv);
 }
 
 static int
@@ -1756,7 +1756,7 @@ NVSetupBlitVideo (ScreenPtr pScreen)
 
 	pPriv = (NVPortPrivPtr)(&adapt->pPortPrivates[NUM_BLIT_PORTS]);
 	for(i = 0; i < NUM_BLIT_PORTS; i++)
-		adapt->pPortPrivates[i].ptr = (pointer)(pPriv);
+		adapt->pPortPrivates[i].ptr = (void*)(pPriv);
 
 	if (pNv->dev->chipset >= 0x11) {
 		adapt->pAttributes = NVBlitAttributes;
@@ -1824,7 +1824,7 @@ NVSetupOverlayVideoAdapter(ScreenPtr pScreen)
 	adapt->pPortPrivates	= (DevUnion*)(&adapt[1]);
 
 	pPriv = (NVPortPrivPtr)(&adapt->pPortPrivates[1]);
-	adapt->pPortPrivates[0].ptr	= (pointer)(pPriv);
+	adapt->pPortPrivates[0].ptr	= (void*)(pPriv);
 
 	adapt->pAttributes		= (pNv->Architecture != NV_ARCH_04) ? NV10OverlayAttributes : NV04OverlayAttributes;
 	adapt->nAttributes		= (pNv->Architecture != NV_ARCH_04) ? NUM_NV10_OVERLAY_ATTRIBUTES : NUM_NV04_OVERLAY_ATTRIBUTES;
@@ -2025,7 +2025,7 @@ NV30SetupTexturedVideo (ScreenPtr pScreen, Bool bicubic)
 
 	pPriv = (NVPortPrivPtr)(&adapt->pPortPrivates[NUM_TEXTURE_PORTS]);
 	for(i = 0; i < NUM_TEXTURE_PORTS; i++)
-		adapt->pPortPrivates[i].ptr = (pointer)(pPriv);
+		adapt->pPortPrivates[i].ptr = (void*)(pPriv);
 
 	adapt->pAttributes		= NVTexturedAttributes;
 	adapt->nAttributes		= NUM_TEXTURED_ATTRIBUTES;
@@ -2107,7 +2107,7 @@ NV40SetupTexturedVideo (ScreenPtr pScreen, Bool bicubic)
 
 	pPriv = (NVPortPrivPtr)(&adapt->pPortPrivates[NUM_TEXTURE_PORTS]);
 	for(i = 0; i < NUM_TEXTURE_PORTS; i++)
-		adapt->pPortPrivates[i].ptr = (pointer)(pPriv);
+		adapt->pPortPrivates[i].ptr = (void*)(pPriv);
 
 	adapt->pAttributes		= NVTexturedAttributes;
 	adapt->nAttributes		= NUM_TEXTURED_ATTRIBUTES;
@@ -2177,7 +2177,7 @@ NV50SetupTexturedVideo (ScreenPtr pScreen)
 
 	pPriv = (NVPortPrivPtr)(&adapt->pPortPrivates[NUM_TEXTURE_PORTS]);
 	for(i = 0; i < NUM_TEXTURE_PORTS; i++)
-		adapt->pPortPrivates[i].ptr = (pointer)(pPriv);
+		adapt->pPortPrivates[i].ptr = (void*)(pPriv);
 
 	adapt->pAttributes		= NVTexturedAttributesNV50;
 	adapt->nAttributes		= NUM_TEXTURED_ATTRIBUTES_NV50;
