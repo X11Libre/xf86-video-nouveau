@@ -45,6 +45,13 @@
 
 #define NOUVEAU_ALIGN(x,bytes) (((x) + ((bytes) - 1)) & ~((bytes) - 1))
 
+#ifndef MAX
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+#endif
+#ifndef MIN
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
+#endif
+
 #define NV50_TILE_PITCH(m) (64 << ((m) & 0xf))
 #define NV50_TILE_HEIGHT(m) (4 << ((m) >> 4))
 #define NVC0_TILE_PITCH(m) (64 << ((m) & 0xf))
