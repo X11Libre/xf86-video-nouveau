@@ -1,0 +1,39 @@
+permissions:
+    contents: write
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    ubuntu:
+        strategy:
+            matrix:
+                xserver-version: [ master, xlibre-xserver-25.1.0, xlibre-xserver-25.0.0.18 ]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: X11Libre/action-build-driver/target/ubuntu@v0.4.0
+              with:
+                xserver-version: ${{ matrix.xserver-version }}
+
+    # not supported by FreeBSD and Dragonfly BSD kernel
+
+    netbsd:
+        strategy:
+            matrix:
+                xserver-version: [ master, xlibre-xserver-25.1.0 ]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: X11Libre/action-build-driver/target/netbsd@v0.4.0
+              with:
+                xserver-version: ${{ matrix.xserver-version }}
+
+    release-notes:
+        name:    Release pushed tag
+        runs-on: ubuntu-latest
+        if:      ${{ startsWith(github.ref, 'refs/tags/xlibre-') }}
+        needs:   [ ubuntu, netbsd ]
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        steps:
+            - uses: X11Libre/action-build-driver/release@v0.4.0
