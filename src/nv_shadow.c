@@ -25,9 +25,6 @@
 #include "shadowfb.h"
 #include "servermd.h"
 
-#define MIN(a, b) (((a) < (b)) ? (a) : (b))
-#define MAX(a, b) (((a) > (b)) ? (a) : (b))
-
 void
 NVRefreshArea(ScrnInfoPtr pScrn, int num, BoxPtr pbox)
 {

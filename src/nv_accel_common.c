@@ -92,7 +92,7 @@ nouveau_allocate_surface(ScrnInfoPtr scrn, int width, int height, int bpp,
 			height = NOUVEAU_ALIGN(height,
 				 NV50_TILE_HEIGHT(cfg.nv50.tile_mode));
 		} else {
-			int pitch_align = max(
+			int pitch_align = MAX(
 				pNv->dev->chipset >= 0x40 ? 1024 : 256,
 				round_down_pow2(*pitch / 4));
 
