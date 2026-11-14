@@ -9,7 +9,7 @@ jobs:
     ubuntu:
         strategy:
             matrix:
-                xserver-version: [ master, xlibre-xserver-25.1.0, xlibre-xserver-25.0.0.18 ]
+                xserver-version: [ master, xlibre-xserver-25.1.11, xlibre-xserver-25.0.0.26 ]
         runs-on: ubuntu-latest
         steps:
             - uses: X11Libre/action-build-driver/target/ubuntu@v0.4.1
@@ -21,7 +21,7 @@ jobs:
     netbsd:
         strategy:
             matrix:
-                xserver-version: [ master, xlibre-xserver-25.1.0 ]
+                xserver-version: [ master, xlibre-xserver-25.1.11 ]
         runs-on: ubuntu-latest
         steps:
             - uses: X11Libre/action-build-driver/target/netbsd@v0.4.1
