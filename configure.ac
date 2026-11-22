@@ -79,8 +79,8 @@ XORG_DRIVER_CHECK_EXT(DPMSExtension, xextproto)
 XORG_DRIVER_CHECK_EXT(DRI2, [dri2proto >= 2.6])
 
 # Checks for libraries
-PKG_CHECK_MODULES(LIBDRM, [libdrm >= 2.4.60])
-PKG_CHECK_MODULES(LIBDRM_NOUVEAU, [libdrm_nouveau >= 2.4.25])
+PKG_CHECK_MODULES(LIBDRM, [libdrm >= 2.4.104])
+PKG_CHECK_MODULES(LIBDRM_NOUVEAU, [libdrm_nouveau >= 2.4.104])
 
 # Obtain compiler/linker options for the driver dependencies
 PKG_CHECK_MODULES(XORG, [xorg-server >= 25.0.0] xproto fontsproto $REQUIRED_MODULES)
