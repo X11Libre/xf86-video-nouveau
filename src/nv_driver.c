@@ -154,7 +154,7 @@ static XF86ModuleVersionInfo nouveauVersRec =
     MODINFOSTRING1,
     MODINFOSTRING2,
     XORG_VERSION_CURRENT,
-    PACKAGE_VERSION_MAJOR, PACKAGE_VERSION_MINOR, PACKAGE_VERSION_PATCHLEVEL,
+    NV_VERSION_MAJOR, NV_VERSION_MINOR, NV_VERSION_PATCH,
     ABI_CLASS_VIDEODRV,                     /* This is a video driver */
     ABI_VIDEODRV_VERSION,
     MOD_CLASS_VIDEODRV,
@@ -162,6 +162,9 @@ static XF86ModuleVersionInfo nouveauVersRec =
 };
 
 _X_EXPORT XF86ModuleData nouveauModuleData = { &nouveauVersRec, nouveauSetup, NULL };
+#ifdef XF86_MODULE_VERSION_SUFFIX
+XF86_MODULE_VERSION_SUFFIX(nouveau, NV_VERSION_SUFFIX);
+#endif
 
 static void*
 nouveauSetup(void *module, void *opts, int *errmaj, int *errmin)
