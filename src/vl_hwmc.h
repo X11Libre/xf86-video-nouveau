@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #ifndef vl_hwmc_h
 #define vl_hwmc_h
 

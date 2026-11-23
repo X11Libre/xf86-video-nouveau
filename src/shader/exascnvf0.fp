@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #ifndef ENVYAS
 static uint32_t
 NVF0FP_Source[] = {

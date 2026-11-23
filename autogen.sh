@@ -1,4 +1,5 @@
 #! /bin/sh
+# SPDX-License-Identifier: MIT
 
 srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.

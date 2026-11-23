@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #ifndef __NVDDX_COPY_H__
 #define __NVDDX_COPY_H__
 

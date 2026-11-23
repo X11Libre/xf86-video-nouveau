@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT AND LicenseRef-NVIDIA-XFree86-nv */
 #ifndef __NV_PROTO_H__
 #define __NV_PROTO_H__
 

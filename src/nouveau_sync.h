@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #ifndef __NOUVEAU_SYNC_H__
 #define __NOUVEAU_SYNC_H__
 

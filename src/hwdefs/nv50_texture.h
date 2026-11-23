@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #ifndef __NV50_TEXTURE_H__
 #define __NV50_TEXTURE_H__
 

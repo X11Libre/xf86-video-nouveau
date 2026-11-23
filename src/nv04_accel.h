@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #ifndef __NV04_ACCEL_H__
 #define __NV04_ACCEL_H__
 
