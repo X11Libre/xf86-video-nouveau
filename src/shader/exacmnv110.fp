@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #ifndef ENVYAS
 static uint32_t
 NV110FP_Composite[] = {

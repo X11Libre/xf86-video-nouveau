@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #ifndef ENVYAS
 static uint32_t
 NVC0FP_Composite[] = {

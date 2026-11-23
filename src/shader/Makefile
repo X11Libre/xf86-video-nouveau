@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 NVC0_SHADERS = xfrm2nvc0.vpc \
 	       exascnvc0.fpc \
 	       exacmnvc0.fpc \

@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT AND LicenseRef-NVIDIA-XFree86-nv */
 #ifndef NV_DMA_H
 #define NV_DMA_H
 

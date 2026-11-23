@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MIT */
 #include "config.h"
 
 #include "vl_hwmc.h"
