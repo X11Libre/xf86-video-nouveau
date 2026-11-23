@@ -890,7 +890,7 @@ nouveau_dri2_schedule_swap(ClientPtr client, DrawablePtr draw,
 		/* Request a vblank event one frame before the target */
 		ret = nouveau_wait_vblank(draw, DRM_VBLANK_ABSOLUTE |
 					  DRM_VBLANK_EVENT,
-					  max(current_msc, *target_msc - 1),
+					  MAX(current_msc, *target_msc - 1),
 					  &expect_msc, NULL, s);
 		if (ret)
 			goto fail;
@@ -949,7 +949,7 @@ nouveau_dri2_schedule_wait(ClientPtr client, DrawablePtr draw,
 	/* Request a vblank event */
 	ret = nouveau_wait_vblank(draw, DRM_VBLANK_ABSOLUTE |
 				  DRM_VBLANK_EVENT,
-				  max(current_msc, target_msc),
+				  MAX(current_msc, target_msc),
 				  NULL, NULL, s);
 	if (ret)
 		goto fail;

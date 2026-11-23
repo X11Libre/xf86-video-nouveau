@@ -210,7 +210,7 @@ NVIdentify(int flags)
     family = NVKnownFamilies;
     while(family->name && family->chipset)
     {
-        maxLen = max(maxLen, strlen(family->name));
+        maxLen = MAX(maxLen, strlen(family->name));
         family++;
     }
 
