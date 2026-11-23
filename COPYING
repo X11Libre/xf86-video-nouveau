@@ -1,0 +1,476 @@
+SPDX-License-Identifier: MIT AND HPND-sell-variant AND LicenseRef-NVIDIA-XFree86-nv
+
+xf86-video-nouveau is distributed under the licenses below. Each section
+gives its SPDX license identifier, a license text exactly as it appears in
+the source files, the copyright notices that come with it, and the files
+they cover. LicenseRef-NVIDIA-XFree86-nv is the NVIDIA notice in section 7,
+which has no identifier on the SPDX License List.
+
+Section 8 lists the files that carry no notice of their own. They are
+distributed under the license of section 1, and their copyright holders are
+their authors as recorded in the git history.
+
+
+1. MIT license
+--------------
+
+SPDX-License-Identifier: MIT
+
+Copyright 1996-1997 David J. McKay
+Copyright 1999 Mark Vojkovich
+Copyright 2003 NVIDIA, Corporation
+Copyright 2007 NVIDIA, Corporation
+Copyright 2007 Nouveau Project
+Copyright 2009 Nouveau Project
+Copyright 2007 Ben Skeggs
+Copyright 2008 Ben Skeggs
+Copyright 2007 Stephane Marchesin
+Copyright 2007 Jeremy Kolb
+Copyright 2007 Patrice Mandin
+Copyright 2007 Arthur Huillet
+Copyright 2007 Peter Winters
+Copyright 2008 Maarten Maathuis
+Copyright 2009 Francisco Jerez
+
+Files: src/nouveau_exa.c, src/nouveau_local.h, src/nouveau_xv.c,
+src/nv04_exa.c, src/nv04_xv_blit.c, src/nv04_xv_ovl.c, src/nv10_exa.c,
+src/nv10_xv_ovl.c, src/nv30_exa.c, src/nv40_exa.c, src/nv50_accel.c,
+src/nv50_exa.c, src/nv50_xv.c, src/nv_accel_common.c, src/nv_driver.c,
+src/nv_rop.h, src/nv_shadow.c, src/nvc0_accel.c, src/nvc0_exa.c,
+src/nvc0_xv.c, and the files in section 8
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+2. MIT license (including the next paragraph)
+---------------------------------------------
+
+SPDX-License-Identifier: MIT
+
+Copyright 2005 Sun Microsystems, Inc.  All rights reserved.
+Copyright © 2007 Red Hat, Inc.
+Copyright © 2009 Red Hat, Inc.
+Copyright © 2008 Maarten Maathuis
+Copyright 2007-2008 Maarten Maathuis
+Copyright 2008 Stephane Marchesin
+
+Files: man/Makefile.am, src/drmmode_display.c, src/nouveau_wfb.c,
+src/nv30_xv_tex.c, src/nv40_xv_tex.c
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice (including the next
+paragraph) shall be included in all copies or substantial portions of the
+Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+3. MIT license (Red Hat)
+------------------------
+
+SPDX-License-Identifier: MIT
+
+Copyright 2013 Red Hat Inc.
+Copyright 2014 Red Hat Inc.
+
+Files: src/nouveau_copy.c, src/nouveau_copy85b5.c, src/nouveau_copy90b5.c,
+src/nouveau_copya0b5.c, src/nouveau_present.c
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+THE COPYRIGHT HOLDER(S) OR AUTHOR(S) BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+
+4. MIT license (build files)
+----------------------------
+
+SPDX-License-Identifier: MIT
+
+Copyright 2005 Adam Jackson.
+
+Files: Makefile.am, configure.ac, src/Makefile.am
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+on the rights to use, copy, modify, merge, publish, distribute, sub
+license, and/or sell copies of the Software, and to permit persons to whom
+the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice (including the next
+paragraph) shall be included in all copies or substantial portions of the
+Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.  IN NO EVENT SHALL
+ADAM JACKSON BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+5. MIT license (envytools hardware definitions)
+-----------------------------------------------
+
+SPDX-License-Identifier: MIT
+
+Copyright (C) 2006-2016 by the following authors:
+- Artur Huillet <arthur.huillet@free.fr> (ahuillet)
+- Ben Skeggs (darktama, darktama_)
+- B. R. <koala_br@users.sourceforge.net> (koala_br)
+- Carlos Martin <carlosmn@users.sf.net> (carlosmn)
+- Christoph Bumiller <e0425955@student.tuwien.ac.at> (calim, chrisbmr)
+- Dawid Gajownik <gajownik@users.sf.net> (gajownik)
+- Dmitry Baryshkov
+- Dmitry Eremin-Solenikov <lumag@users.sf.net> (lumag)
+- EdB <edb_@users.sf.net> (edb_)
+- Erik Waling <erikwailing@users.sf.net> (erikwaling)
+- Francisco Jerez <currojerez@riseup.net> (curro)
+- Ilia Mirkin <imirkin@alum.mit.edu> (imirkin)
+- imirkin <imirkin@users.sf.net> (imirkin)
+- jb17bsome <jb17bsome@bellsouth.net> (jb17bsome)
+- Jeremy Kolb <kjeremy@users.sf.net> (kjeremy)
+- Laurent Carlier <lordheavym@gmail.com> (lordheavy)
+- Luca Barbieri <luca@luca-barbieri.com> (lb, lb1)
+- Maarten Maathuis <madman2003@gmail.com> (stillunknown)
+- Marcin Kościelnicki <koriakin@0x04.net> (mwk, koriakin)
+- Mark Carey <mark.carey@gmail.com> (careym)
+- Matthieu Castet <matthieu.castet@parrot.com> (mat-c)
+- nvidiaman <nvidiaman@users.sf.net> (nvidiaman)
+- Patrice Mandin <patmandin@gmail.com> (pmandin, pmdata)
+- Pekka Paalanen <pq@iki.fi> (pq, ppaalanen)
+- Peter Popov <ironpeter@users.sf.net> (ironpeter)
+- Richard Hughes <hughsient@users.sf.net> (hughsient)
+- Rudi Cilibrasi <cilibrar@users.sf.net> (cilibrar)
+- Serge Martin
+- Simon Raffeiner
+- Stephane Loeuillet <leroutier@users.sf.net> (leroutier)
+- Stephane Marchesin <stephane.marchesin@gmail.com> (marcheu)
+- sturmflut <sturmflut@users.sf.net> (sturmflut)
+- Sylvain Munaut <tnt@246tNt.com>
+- Victor Stinner <victor.stinner@haypocalc.com> (haypo)
+- Wladmir van der Laan <laanwj@gmail.com> (miathan6)
+- Younes Manton <younes.m@gmail.com> (ymanton)
+
+Files: src/hwdefs/*.xml.h (generated by the rules-ng-ng headergen tool
+from envytools; the years in each file run from 2006 to 2011, 2014 or 2016)
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice (including the
+next paragraph) shall be included in all copies or substantial
+portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE COPYRIGHT OWNER(S) AND/OR ITS SUPPLIERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+6. Historical Permission Notice and Disclaimer (Intel)
+------------------------------------------------------
+
+SPDX-License-Identifier: HPND-sell-variant
+
+Copyright © 2013-2014 Intel Corporation
+
+Files: src/nouveau_sync.c
+
+Permission to use, copy, modify, distribute, and sell this software and its
+documentation for any purpose is hereby granted without fee, provided that
+the above copyright notice appear in all copies and that both that copyright
+notice and this permission notice appear in supporting documentation, and
+that the name of the copyright holders not be used in advertising or
+publicity pertaining to distribution of the software without specific,
+written prior permission.  The copyright holders make no representations
+about the suitability of this software for any purpose.  It is provided "as
+is" without express or implied warranty.
+
+THE COPYRIGHT HOLDERS DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
+EVENT SHALL THE COPYRIGHT HOLDERS BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
+OF THIS SOFTWARE.
+
+
+7. NVIDIA notice
+----------------
+
+SPDX-License-Identifier: LicenseRef-NVIDIA-XFree86-nv
+
+Copyright 1993-2003 NVIDIA, Corporation.  All rights reserved.
+
+Files: man/nouveau.man (which carries this notice), and the parts of
+src/nv_const.h, src/nv_dma.h, src/nv_include.h, src/nv_proto.h and
+src/nv_type.h that come from the XFree86 nv driver (src/nv_dma.h carried
+the Copyright 2003 NVIDIA, Corporation form of this notice until 2007)
+
+NOTICE TO USER:   The source code  is copyrighted under  U.S. and
+international laws.  Users and possessors of this source code are
+hereby granted a nonexclusive,  royalty-free copyright license to
+use this code in individual and commercial software.
+
+Any use of this source code must include,  in the user documentation and
+internal comments to the code,  notices to the end user as follows:
+
+Copyright 1993-2003 NVIDIA, Corporation.  All rights reserved.
+
+NVIDIA, CORPORATION MAKES NO REPRESENTATION ABOUT THE SUITABILITY
+OF  THIS SOURCE  CODE  FOR ANY PURPOSE.  IT IS  PROVIDED  "AS IS"
+WITHOUT EXPRESS OR IMPLIED WARRANTY OF ANY KIND.  NVIDIA, CORPORATION
+DISCLAIMS ALL WARRANTIES  WITH REGARD  TO THIS SOURCE CODE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT,
+AND FITNESS  FOR A PARTICULAR PURPOSE.   IN NO EVENT SHALL
+NVIDIA, CORPORATION  BE LIABLE FOR ANY SPECIAL,  INDIRECT,  INCIDENTAL,
+OR CONSEQUENTIAL DAMAGES,  OR ANY DAMAGES  WHATSOEVER RESULTING FROM
+LOSS OF USE,  DATA OR PROFITS,  WHETHER IN AN ACTION
+OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,  ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOURCE CODE.
+
+U.S. Government  End  Users.   This source code  is a "commercial
+item,"  as that  term is  defined at  48 C.F.R. 2.101 (OCT 1995),
+consisting  of "commercial  computer  software"  and  "commercial
+computer  software  documentation,"  as such  terms  are  used in
+48 C.F.R. 12.212 (SEPT 1995)  and is provided to the U.S. Government
+only as  a commercial end item.   Consistent with  48 C.F.R.
+12.212 and  48 C.F.R. 227.7202-1 through  227.7202-4 (JUNE 1995),
+all U.S. Government End Users  acquire the source code  with only
+those rights set forth herein.
+
+
+8. Files without a notice of their own
+--------------------------------------
+
+SPDX-License-Identifier: MIT
+
+These files are distributed under the license of section 1. Their
+copyright holders are their authors according to the git history.
+src/nv_const.h, src/nv_dma.h, src/nv_include.h, src/nv_proto.h and
+src/nv_type.h also contain code from the XFree86 nv driver (section 7);
+their identifier is "MIT AND LicenseRef-NVIDIA-XFree86-nv".
+
+autogen.sh:
+Copyright 2005 Daniel Stone
+Copyright 2005 Søren Sandmann Pedersen
+Copyright 2008 Maarten Maathuis
+Copyright 2014 Dave Airlie
+
+man/nouveau.man (besides the NVIDIA notice in section 7):
+Copyright 2003 Kaleb Keithley
+Copyright 2004-2005 Alan Coopersmith
+Copyright 2004 Egbert Eich
+Copyright 2004 Eric Anholt
+Copyright 2006-2010 Ben Skeggs
+Copyright 2006 Aaron Plattner
+Copyright 2006 Mark Vojkovich
+Copyright 2007-2010 Maarten Maathuis
+Copyright 2008 Stuart Bennett
+Copyright 2010 Francisco Jerez
+Copyright 2010 Xavier Chantry
+Copyright 2011 Francesco Marella
+Copyright 2012-2015 Mario Kleiner
+Copyright 2014-2019 Ilia Mirkin
+
+src/hwdefs/nv50_texture.h:
+Copyright 2008-2011 Ben Skeggs
+Copyright 2009 Marcin Slusarz
+
+src/nouveau_copy.h:
+Copyright 2014 Ben Skeggs
+
+src/nouveau_dri2.c:
+Copyright 2009-2012 Francisco Jerez
+Copyright 2009-2014 Ben Skeggs
+Copyright 2011-2013 Christoph Bumiller
+Copyright 2011-2015 Maarten Lankhorst
+Copyright 2011 Maxim Levitsky
+Copyright 2012-2013 Dave Airlie
+Copyright 2012-2015 Mario Kleiner
+Copyright 2013 Emil Velikov
+Copyright 2015-2019 Ilia Mirkin
+Copyright 2017 Lyude
+Copyright 2019 Rhys Kidd
+Copyright 2021 Łukasz Spintzyk
+Copyright 2024-2025 Enrico Weigelt, metux IT consult
+
+src/nouveau_present.h:
+Copyright 2013 Ben Skeggs
+Copyright 2014 Maarten Lankhorst
+Copyright 2014 Marcin Slusarz
+Copyright 2025 Enrico Weigelt, metux IT consult
+
+src/nouveau_sync.h:
+Copyright 2014 Ben Skeggs
+
+src/nv04_accel.h:
+Copyright 2011-2012 Ben Skeggs
+
+src/nv50_accel.h:
+Copyright 2008-2012 Ben Skeggs
+Copyright 2015 Ilia Mirkin
+
+src/nv_const.h (see also section 7):
+Copyright 2003 Kaleb Keithley
+Copyright 2004 Egbert Eich
+Copyright 2004 Eric Anholt
+Copyright 2006-2014 Ben Skeggs
+Copyright 2006 Aaron Plattner
+Copyright 2006 Adam Jackson
+Copyright 2007-2010 Maarten Maathuis
+Copyright 2007 Dave Airlie
+Copyright 2008-2009 Stuart Bennett
+Copyright 2010 Francisco Jerez
+Copyright 2010 Jesse Adkins
+Copyright 2010 Xavier Chantry
+Copyright 2012-2015 Mario Kleiner
+Copyright 2026 Joseph Crowell
+
+src/nv_dma.h (see also section 7):
+Copyright 2003 Kaleb Keithley
+Copyright 2004 Alan Coopersmith
+Copyright 2004 Egbert Eich
+Copyright 2006-2007 Dave Airlie
+Copyright 2006-2007 Stephane Marchesin
+Copyright 2006-2011 Ben Skeggs
+Copyright 2007 Arthur Huillet
+
+src/nv_include.h (see also section 7):
+Copyright 2003 Kaleb Keithley
+Copyright 2004 Egbert Eich
+Copyright 2004 Eric Anholt
+Copyright 2005 Daniel Stone
+Copyright 2006-2012 Adam Jackson
+Copyright 2006-2012 Ben Skeggs
+Copyright 2006-2012 Dave Airlie
+Copyright 2006 Aaron Plattner
+Copyright 2006-2007 Stephane Marchesin
+Copyright 2007-2009 Maarten Maathuis
+Copyright 2007 Arthur Huillet
+Copyright 2007 Patrice Mandin
+Copyright 2008-2009 Stuart Bennett
+Copyright 2010 Jesse Adkins
+Copyright 2010 Marcin Kościelnicki
+Copyright 2019-2021 Ilia Mirkin
+Copyright 2019 Rhys Kidd
+Copyright 2025-2026 Enrico Weigelt, metux IT consult
+
+src/nv_proto.h (see also section 7):
+Copyright 2003 Kaleb Keithley
+Copyright 2004 Alan Coopersmith
+Copyright 2004 Egbert Eich
+Copyright 2004 Eric Anholt
+Copyright 2006-2012 Dave Airlie
+Copyright 2006-2014 Ben Skeggs
+Copyright 2006 Andrew Mitchell
+Copyright 2007-2008 Arthur Huillet
+Copyright 2007-2008 Stephane Marchesin
+Copyright 2007-2009 Maarten Maathuis
+Copyright 2007-2009 Stuart Bennett
+Copyright 2007 Patrice Mandin
+Copyright 2008 Pierre Ossman
+Copyright 2009-2010 Francisco Jerez
+Copyright 2009 Adam Jackson
+Copyright 2012-2014 Mario Kleiner
+Copyright 2014 Maarten Lankhorst
+Copyright 2017 Lyude
+Copyright 2019 Rhys Kidd
+Copyright 2021 Łukasz Spintzyk
+Copyright 2024 Sérgio M. Basto
+Copyright 2025-2026 Enrico Weigelt, metux IT consult
+
+src/nv_type.h (see also section 7):
+Copyright 2003 Kaleb Keithley
+Copyright 2004-2005 Alan Coopersmith
+Copyright 2004 Egbert Eich
+Copyright 2004 Eric Anholt
+Copyright 2006-2008 Stephane Marchesin
+Copyright 2006-2013 Dave Airlie
+Copyright 2006-2014 Ben Skeggs
+Copyright 2006 Aaron Plattner
+Copyright 2006 Andrew Mitchell
+Copyright 2006 Matthieu Castet
+Copyright 2007-2008 Arthur Huillet
+Copyright 2007-2009 Maarten Maathuis
+Copyright 2007-2009 Stuart Bennett
+Copyright 2007 Patrice Mandin
+Copyright 2007 Pekka Paalanen
+Copyright 2009-2010 Francisco Jerez
+Copyright 2012-2014 Maarten Lankhorst
+Copyright 2012-2015 Mario Kleiner
+Copyright 2012 Adam Jackson
+Copyright 2013 Emil Velikov
+Copyright 2014-2017 Ilia Mirkin
+Copyright 2014 Hans de Goede
+Copyright 2025-2026 Enrico Weigelt, metux IT consult
+
+src/nvc0_accel.h:
+Copyright 2011-2014 Ben Skeggs
+Copyright 2012 Christoph Bumiller
+Copyright 2016 Ilia Mirkin
+
+src/vl_hwmc.c:
+Copyright 2008 Younes Manton
+Copyright 2011 Bryan Cain
+Copyright 2012 Dave Airlie
+Copyright 2025-2026 Enrico Weigelt, metux IT consult
+
+src/vl_hwmc.h:
+Copyright 2008 Younes Manton
+
+src/shader/* (shader sources, their compiled forms and the Makefile):
+Copyright 2013 Ben Skeggs
+Copyright 2013 Maarten Lankhorst
+Copyright 2014 Ilia Mirkin
